@@ -138,12 +138,16 @@ Welcome to the "Avengers": The Modern Software Development Team includes:
 ### Teaching Team & Schedule / 教学团队与进度
 
 #### English
-- Teaching team: Lecturer + Tutor + TA; weekly 3-hour session (lecture+tutorial), 8:30am Wed AC5-416; may overrun.
-- Course schedule (tentative): W1 Introduction/Project; W2 Process; W3 Modern Code Review; W4 Requirements; W5 Architecture/Design; W6 Technical Debt; W7 Quiz; W8 Code Quality; W9 Testing (1); W10 Testing (2); W11 Maintenance; W12 Revision; W13 Project Presentation.
+- **Teaching team**: Lecturer + Tutor + TA; weekly 3-hour session (lecture+tutorial), 8:30am Wed AC5-416; may overrun. Face-to-face teaching and learning.
+- **Course schedule (tentative)**: W1 Introduction/Project; W2 Process; W3 Modern Code Review; W4 Requirements; W5 Architecture/Design; W6 Technical Debt; W7 Quiz; W8 Code Quality; W9 Testing (1); W10 Testing (2); W11 Maintenance; W12 Revision; W13 Project Presentation.
+- **CILOs (Course Intended Learning Outcomes)**: Describe fundamental software engineering process models and comprehend current trends; Explain and analyze advanced software engineering principles and techniques; Create and maintain design and codebase of software engineering projects; Perform team-based software engineering tasks. Students need to record/apply/implement advanced software engineering processes, principles, and techniques in team-based projects as coursework.
+- **Pre-requisite**: CS2312 Problem Solving and Programming or equivalent. In CityU CS Undergraduate Programme: CS2312 is the third CS programming course in Year 2 (after CS2310 C++ and CS1302 JavaScript in Year 1). CS5351 assumes good programming ability and basis of program development; it is NOT a course to assess code writing or teach programming.
 
 #### 中文
-- 教学团队：讲师 + 导师 + 助教；每周 3 小时连堂（讲座+辅导），周三 8:30，AC5-416，可能超时。
-- 课程进度（暂定）：1 导论/项目；2 过程；3 现代代码审查；4 需求；5 架构/设计；6 技术债；7 测验；8 代码质量；9 测试(1)；10 测试(2)；11 维护；12 复习；13 项目展示。
+- **教学团队**：讲师 + 导师 + 助教；每周 3 小时连堂（讲座+辅导），周三 8:30，AC5-416，可能超时。面对面教学。
+- **课程进度（暂定）**：1 导论/项目；2 过程；3 现代代码审查；4 需求；5 架构/设计；6 技术债；7 测验；8 代码质量；9 测试(1)；10 测试(2)；11 维护；12 复习；13 项目展示。
+- **课程预期学习成果（CILOs）**：描述基本软件工程过程模型并理解当前趋势；解释和分析高级软件工程原则和技术；创建和维护软件工程项目的设计和代码库；执行基于团队的软件工程任务。学生需要在基于团队的项目中记录/应用/实施高级软件工程过程、原则和技术作为课程作业。
+- **先修课程**：CS2312 问题解决与编程或同等课程。在城大 CS 本科课程中：CS2312 是第二年的第三门 CS 编程课程（第一年有 CS2310 C++ 和 CS1302 JavaScript）。CS5351 假设良好的编程能力和程序开发基础；它不是评估代码编写或教授编程的课程。
 
 ---
 

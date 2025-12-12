@@ -62,33 +62,73 @@ Feature backlog, deferred/cut features: if doing later does not cost more than n
 
 #### English
 Common classification:
-1) **Type**: design, code, test, documentation, build/env, requirements, architecture, etc.
-2) **Intentionality**: intentional vs unintentional.
-3) **Time horizon**: short vs long term.
-4) **Degree of focus** (how localized/systemic).
+1) **Type**: design, code, test, documentation, build/env, requirements, architecture, etc. (TD is not just coding; refactoring code smells cannot solve all)
+2) **Intentionality**: 
+   - **Intentional**: Deliberate shortcuts (e.g., "minimal testing to meet deadline", "iOS only now, Android later", "skip unit tests, add later")
+   - **Unintentional**: Low-quality work (junior programmer, newcomer not following standards, poor design strategy, failed refactoring, honest/careless mistakes)
+3) **Time horizon**: 
+   - **Short-term**: Reactive, quick actions (skip integration tests, hack it in, violate standards for urgent patch)
+   - **Long-term**: Proactive, strategic (single platform for 3 years, COBOL core for 40 years)
+4) **Degree of focus**: 
+   - **Focused short-term**: Individually identifiable shortcuts (partial class implementation)
+   - **Unfocused short-term**: Numerous tiny shortcuts (frequent coding standard violations, loose documentation)
+   - **Focused long-term**: Strategic decisions (single platform support)
+   - **Unfocused long-term**: Using most productive languages/frameworks per feature
+
+**Patterns that Increase TD**:
+1. **Schedule Pressure**: Unreasonable commitments lead to corner-cutting (creeping scope, team changes, late integration) → Use flexible planning
+2. **Code Duplication**: Lack of experience, copy-paste, conforming to poor design, delivery pressure → Use static analysis, pair programming, track/repay debts
+3. **Get it "right" the first time**: Over-engineering, over-generalization → Costs keep growing
 
 #### 中文
 常见分类：
-1) **类型**：设计、代码、测试、文档、构建/环境、需求、架构等。
-2) **意图性**：有意/无意。
-3) **时间跨度**：短期/长期。
-4) **关注度**：局部/系统性。
+1) **类型**：设计、代码、测试、文档、构建/环境、需求、架构等（TD 不仅是编码；重构代码异味无法解决全部）
+2) **意图性**：
+   - **有意**：故意的捷径（如"最少测试以达期限"、"先 iOS 后 Android"、"跳过单元测试，后续补"）
+   - **无意**：低质量工作（初级程序员、新人不遵循标准、设计策略差、重构失败、诚实/粗心错误）
+3) **时间跨度**：
+   - **短期**：被动、快速行动（跳过集成测试、临时方案、为紧急补丁违反标准）
+   - **长期**：主动、战略性（单平台 3 年，COBOL 核心 40 年）
+4) **关注度**：
+   - **聚焦短期**：可单独识别的捷径（部分类实现）
+   - **分散短期**：众多小捷径（频繁违反编码标准、文档松散）
+   - **聚焦长期**：战略决策（单平台支持）
+   - **分散长期**：每个功能使用最高效的语言/框架
+
+**增加 TD 的模式**：
+1. **进度压力**：不合理承诺导致走捷径（范围蔓延、团队变化、集成延迟）→ 使用灵活规划
+2. **代码重复**：经验不足、复制粘贴、遵循差设计、交付压力 → 使用静态分析、结对编程、跟踪/偿还债务
+3. **一次做对**：过度工程、过度泛化 → 成本持续增长
 
 ---
 
 ## 6. Management Basics / 6. 管理要点
 
 #### English
-- Identify and track TD in backlog; discuss openly.
-- Make TD items explicit (“glue code now, reconcile DB later”).
-- Prioritize payback vs. features considering interest cost.
-- Refactor to pay down; prevent new TD by better design, testing, tooling.
+- **Identify and track TD in backlog**: Discuss openly. Make TD items explicit ("glue code now, reconcile DB later"). All "good debt" can be tracked (at least by definition). Log as defects, include in product backlogs, monitor project velocity, monitor amount of rework.
+- **Ways to Measure Debt**: Total debt in product backlog, maintenance budget (or fraction), measure debt in money not features (e.g., "50% of R&D budget is nonproductive maintenance work").
+- **Visual Tracking**: Visualize TD on task boards (Kanban board) with different card colors/types (New features, Tech debt, Defects, Investigations, External Issues). Include limits, avatars, arrows (movement), blockers, waste, continuous improvements.
+- **Repay Technical Debts**: Periodically reserve timeslot to deal with TD. Longer time for refactoring trades for smaller number of refactoring cycles, and vice versa. Prioritize refactoring tasks to address critical areas first. Involve product owners and stakeholders.
+- **Discuss Technical Debts**: Educate technical staff about business decision-making; educate business staff about technical decision-making. Raises awareness/transparency, allows TDs to be managed more explicitly and visually.
+- **Strategies in Practice** (from survey on 26 companies):
+  1. Do nothing - "if it ain't broke, don't fix it" - debt might never become visible to customer
+  2. Use risk management approach - allocate 5-10% of each release cycle to addressing TD
+  3. Manage expectations - make customers/nontechnical stakeholders equal partners, facilitate open dialogue
+  4. Conduct audits - make TD visible and explicit, track using backlog/task board
+- **Effective Practices** (from survey on 226 participants from 15 large organizations): Backlogs (most used: Jira, Hansoft, Excel), static analyzers and lint programs - increase tracking level with least overhead, seem to be best practices. Comments in code help awareness but not considered tracking (used by 1%). Documentation increases awareness but highest overhead (Excel/Word) - not recommendable. Bug system and test coverage - not best way.
 
 #### 中文
-- 识别并在待办中跟踪 TD，公开讨论。
-- 将 TD 条目显式化（如“先用胶水代码，后续合并数据库”）。
-- 在利息成本下权衡还债与新功能优先级。
-- 通过重构偿还；通过更好设计、测试、工具避免新增 TD。
+- **识别和跟踪**：在待办中识别和跟踪 TD，公开讨论。将 TD 条目显式化（如"先用胶水代码，后续合并数据库"）。所有"好债"都可以跟踪（至少按定义）。记录为缺陷，包含在产品待办中，监控项目速度，监控返工量。
+- **衡量债务的方法**：产品待办中的总债务、维护预算（或比例）、用金钱而非功能衡量债务（如"50% 的研发预算是非生产性维护工作"）。
+- **可视化跟踪**：在任务板（看板）上可视化 TD，使用不同的卡片颜色/类型（新功能、技术债、缺陷、调查、外部问题）。包括限制、头像、箭头（移动）、阻碍、浪费、持续改进。
+- **偿还技术债**：定期预留时间段处理 TD。更长的重构时间换取更少的重构周期，反之亦然。优先处理关键区域的重构任务。让产品负责人和利益相关者参与。
+- **讨论技术债**：教育技术人员了解业务决策；教育业务人员了解技术决策。提高意识/透明度，允许更明确和可视化地管理 TD。
+- **实践策略**（来自对 26 家公司的调查）：
+  1. 什么都不做 - "没坏就别修" - 债务可能永远不会对客户可见
+  2. 使用风险管理方法 - 将每个发布周期的 5-10% 用于解决 TD
+  3. 管理期望 - 让客户/非技术利益相关者成为平等伙伴，促进开放对话
+  4. 进行审计 - 使 TD 可见和明确，使用待办/任务板跟踪
+- **有效实践**（来自对 15 个大型组织的 226 名参与者的调查）：待办（最常用：Jira、Hansoft、Excel）、静态分析器和 lint 程序 - 以最低开销提高跟踪水平，似乎是最佳实践。代码中的注释有助于意识但不被视为跟踪（1% 使用）。文档提高意识但开销最高（Excel/Word）- 不推荐。错误系统和测试覆盖率 - 不是最佳方式。
 
 ---
 

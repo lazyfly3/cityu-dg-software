@@ -494,3 +494,33 @@ Reviewers need various types of information to effectively review code changes:
 - 测试代码审查：应审但频率较低，关注测试质量/覆盖/策略；重构相关 patch 也应明确动机与范围
 - 典型工具用法：GitHub PR 逐行评论/文件展开、Gerrit 变更集、邮件/IM 异步讨论
 
+### In-Class Activity MCR-2 / 课堂活动 MCR-2
+
+#### English
+
+**Setup**: Form a group of 4-5 students
+- Author A: 1 student
+- Reviewer R: no pre-defined role
+- Agree on tool (GitHub support)
+
+**Timeline (30 minutes)**:
+- 00-15: A prepares patch P for code C on GitHub, with explanation, notifies via e-channel
+- 15-25: R reviews P and posts comments on GitHub, notifies when finished
+- 15-25: A answers issues, provides clarifications, revises patch P' iteratively
+- 25-30: R approves P, A applies final patch P' to get corrected code C2
+- 30: A submits C2 with comments (images/link to GitHub repo) to Canvas Discussion for peer sharing
+
+#### 中文
+
+**设置**：组成 4-5 名学生的小组
+- 作者 A：1 名学生
+- 审查者 R：无预定义角色
+- 商定工具（GitHub 支持）
+
+**时间线（30 分钟）**：
+- 00-15：A 在 GitHub 上为代码 C 准备补丁 P，附说明，通过电子渠道通知
+- 15-25：R 审查 P 并在 GitHub 上发布评论，完成后通知
+- 15-25：A 回答问题，提供澄清，迭代修订补丁 P'
+- 25-30：R 批准 P，A 应用最终补丁 P' 获得修正代码 C2
+- 30：A 提交 C2 及评论（图片/GitHub 仓库链接）到 Canvas 讨论区供同伴分享
+

@@ -44,7 +44,15 @@ Abstraction is a fundamental concept in programming theory that aims to avoid du
 
 **Functional Abstraction**: Let C be a piece of code with a well-defined purpose. We put C into the body of a function having a function signature F. We say that F is an abstraction of C. A program P can include C once in the body of F and include one or more statements to call F instead of including multiple copies of C. Developers of the client code U of F need not comprehend the code C; rather, they can rely on the abstraction F and its well-defined functional purpose to complete their own tasks.
 
+**Generalization Abstraction**: Finding similarities/common aspects and forgetting unimportant differences. Let {C1, …, Ci, …, Cn} be codes with similar functional purposes. F is a common abstraction of them. Differences in parameters are unified; similarities are structured in F's body; differences are put under different control flow parts. Or in OO: create a class hierarchy. Makes U more maintainable (easier to understand, avoid maintaining code list explicitly, clean and minimal).
+
 **Data Abstraction**: If we abstract and group functions critically related to a data structure into a set, the set represents a single functional purpose of the data structure. Data Abstraction is to model the operators on a data structure as a set of related functions (called interfaces). In contrast, the data structure implementations are concealed by the interfaces.
+
+**Good vs. Bad Data Abstraction Example (Stack)**:
+- **Good**: Stack(), isEmpty(), length(), push(x), pop() - maintains stack integrity (first-in-last-out), doesn't expose implementation
+- **Bad**: isEqual(int[] X), set(int x, int i), get(int i), push(int x, int i) - exposes array implementation, violates stack property, allows direct manipulation
+- **Worse**: set(int[] X), get() returns internal structure - completely exposes implementation
+- **Key principle**: After each operator invocation, data structure integrity must be kept intact. Changes should only be performed by operators, not by client code directly accessing internal structure.
 
 #### 中文
 
@@ -52,7 +60,15 @@ Abstraction is a fundamental concept in programming theory that aims to avoid du
 
 **功能抽象**：设 C 是一段具有明确定义目的的代码。我们将 C 放入具有函数签名 F 的函数体中。我们说 F 是 C 的抽象。程序 P 可以在 F 的主体中包含 C 一次，并包含一个或多个调用 F 的语句，而不是包含多个 C 的副本。F 的客户端代码 U 的开发者不需要理解代码 C；相反，他们可以依赖抽象 F 及其明确定义的功能目的来完成自己的任务。
 
+**泛化抽象**：寻找相似性/共同方面并忽略不重要的差异。设 {C1, …, Ci, …, Cn} 是具有相似功能目的的代码。F 是它们的共同抽象。参数差异被统一；相似性在 F 的主体中结构化；差异被放在不同的控制流部分。或在 OO 中：创建类层次结构。使 U 更易维护（更易理解，避免显式维护代码列表，简洁）。
+
 **数据抽象**：如果我们将与数据结构密切相关的函数抽象并分组到一个集合中，该集合表示数据结构的单一功能目的。数据抽象是将数据结构上的操作建模为一组相关函数（称为接口）。相反，数据结构的具体实现被接口隐藏。
+
+**好与坏的数据抽象示例（栈）**：
+- **好**：Stack(), isEmpty(), length(), push(x), pop() - 保持栈完整性（后进先出），不暴露实现
+- **坏**：isEqual(int[] X), set(int x, int i), get(int i), push(int x, int i) - 暴露数组实现，违反栈属性，允许直接操作
+- **更差**：set(int[] X), get() 返回内部结构 - 完全暴露实现
+- **关键原则**：每次操作符调用后，数据结构完整性必须保持。更改应仅由操作符执行，而不是客户端代码直接访问内部结构。
 
 ---
 
@@ -62,9 +78,23 @@ Abstraction is a fundamental concept in programming theory that aims to avoid du
 
 Information Hiding means that interfaces should be chosen to reveal as little as possible about its internal workings. We should ask whether the level of details specified in the parameters of an operator in an interface is essential. The goal is to remove details from the interfaces of a data structure by interrelating these interfaces.
 
+**Example**: 
+- `canVote1(int HKID, int age, int district_code)` reveals more details (three separate parameters)
+- `canVote2(Voter v)` hides details (single object parameter)
+- The second is better as it reveals less about internal workings
+
+**Concept**: Like mathematical projection - the projection of a circle on dimension x results in a line segment, hiding the y dimension details.
+
 #### 中文
 
 信息隐藏意味着接口应该尽可能少地暴露其内部工作机制。我们应该询问接口中操作符参数指定的细节级别是否必要。目标是通过相互关联这些接口来从数据结构的接口中移除细节。
+
+**示例**：
+- `canVote1(int HKID, int age, int district_code)` 暴露更多细节（三个独立参数）
+- `canVote2(Voter v)` 隐藏细节（单个对象参数）
+- 第二个更好，因为它暴露的内部工作机制更少
+
+**概念**：类似于数学投影 - 圆在维度 x 上的投影产生线段，隐藏了 y 维度的细节。
 
 ---
 
@@ -74,9 +104,23 @@ Information Hiding means that interfaces should be chosen to reveal as little as
 
 Encapsulation on X refers to ensuring outsiders cannot gain knowledge about certain information internal to X. X can be a class, a module, a file, a data record, etc. We achieve good encapsulation if we can describe the functional purpose using the least "working known-how" of the operators of a data structure and the functional signature does not specify more than what the functional purpose states. We can control the visibility of each data member or data method of a class to increase the level of encapsulation.
 
+**Encapsulation Violation Example**:
+- If Stack's internal array `a` is public or accessible via getter/setter, client code can manipulate it directly, corrupting stack integrity
+- Solution: Make internal data members private; don't expose getSize()/setSize() if they allow direct manipulation
+- We should also control input/output parameters to prevent encapsulation violations
+
+**Key Point**: Controlling visibility (public/private) is necessary but not sufficient. We must also ensure that input/output parameters don't reveal or allow manipulation of internal state.
+
 #### 中文
 
 X 的封装是指确保外部无法获取 X 内部的某些信息。X 可以是类、模块、文件、数据记录等。如果我们能够使用数据结构操作符的最少"工作知识"来描述功能目的，并且功能签名指定的内容不超过功能目的所说明的内容，我们就实现了良好的封装。我们可以控制类的每个数据成员或数据方法的可见性来增加封装级别。
+
+**封装违反示例**：
+- 如果 Stack 的内部数组 `a` 是公共的或可通过 getter/setter 访问，客户端代码可以直接操作它，破坏栈完整性
+- 解决方案：使内部数据成员私有；如果允许直接操作，不要暴露 getSize()/setSize()
+- 我们还应该控制输入/输出参数以防止封装违反
+
+**关键点**：控制可见性（public/private）是必要的，但还不够。我们还必须确保输入/输出参数不会暴露或允许操作内部状态。
 
 ---
 
@@ -84,27 +128,39 @@ X 的封装是指确保外部无法获取 X 内部的某些信息。X 可以是�
 
 #### English
 
-Coupling is about syntactic dependency. Our aim is to minimize coupling in the code listing. An entity X is structurally and directly dependent on another entity Y at compile time. If X is changed (e.g., deleted/changed its datatype), then Y changes too. If Y changes, elements (say Z) depend on Y changes too. Z is indirectly dependent on X.
+Coupling is about syntactic dependency. Our aim is to minimize coupling in the code listing. An entity X is structurally and directly dependent on another entity Y at compile time (when code is not yet run). There is a direct structural dependency from X to Y. Programmers need such dependency info for computational efficiency; compiler needs it for code optimization. We often "hard-code" the dependency in source code (component, dataflow, control flow).
+
+**Property**: If X is changed (e.g., deleted/changed its datatype), then Y changes too.
+
+**Consequence**: If Y changes (as result of X), elements (say Z) depend on Y changes too. Z is indirectly dependent on X. If we can either (1) reduce coupling at compile time or (2) delay dependency from compile time to run time, then we make our program have better kinds of coupling.
 
 There are six basic types of coupling (from worse to better):
-1. Content Coupling - directly use a part of code
-2. Common Coupling - global variable
-3. External Coupling - interface protocol, file
-4. Control Coupling - control flow, workflow pipeline
-5. Stamp Coupling - a part of a data structure
-6. Data Coupling - the whole data structure
+1. **Content Coupling** - directly use a part of code
+2. **Common Coupling** - global variable
+3. **External Coupling** - interface protocol, file. Example: f(file X) and g(file X, data z) both read from file X. If changed so they pass needs to new entity u to access X, external coupling is reduced.
+4. **Control Coupling** - control flow, workflow pipeline
+5. **Stamp Coupling** - a part of a data structure
+6. **Data Coupling** - the whole data structure
+
+**Example**: In bubble sorting, control coupling from B.sort() to A.greater(), data coupling from B to A.
 
 #### 中文
 
-耦合是关于语法依赖性的概念。我们的目标是最小化代码中的耦合。实体 X 在编译时在结构上直接依赖于另一个实体 Y。如果 X 被更改（例如，删除/更改其数据类型），那么 Y 也会改变。如果 Y 改变，依赖于 Y 的元素（比如 Z）也会改变。Z 间接依赖于 X。
+耦合是关于语法依赖性的概念。我们的目标是最小化代码中的耦合。实体 X 在编译时（代码尚未运行时）在结构上直接依赖于另一个实体 Y。存在从 X 到 Y 的直接结构依赖。程序员需要此类依赖信息以提高计算效率；编译器需要它进行代码优化。我们经常在源代码中"硬编码"依赖（组件、数据流、控制流）。
+
+**属性**：如果 X 被更改（例如，删除/更改其数据类型），那么 Y 也会改变。
+
+**后果**：如果 Y 改变（作为 X 的结果），依赖于 Y 的元素（比如 Z）也会改变。Z 间接依赖于 X。如果我们能够（1）在编译时减少耦合或（2）将依赖从编译时延迟到运行时，那么我们使程序具有更好的耦合类型。
 
 有六种基本类型的耦合（从差到好）：
-1. 内容耦合 - 直接使用代码的一部分
-2. 公共耦合 - 全局变量
-3. 外部耦合 - 接口协议、文件
-4. 控制耦合 - 控制流、工作流管道
-5. 标记耦合 - 数据结构的一部分
-6. 数据耦合 - 整个数据结构
+1. **内容耦合** - 直接使用代码的一部分
+2. **公共耦合** - 全局变量
+3. **外部耦合** - 接口协议、文件。示例：f(file X) 和 g(file X, data z) 都从文件 X 读取。如果更改使它们将需求传递给新实体 u 以访问 X，则外部耦合减少。
+4. **控制耦合** - 控制流、工作流管道
+5. **标记耦合** - 数据结构的一部分
+6. **数据耦合** - 整个数据结构
+
+**示例**：在冒泡排序中，从 B.sort() 到 A.greater() 的控制耦合，从 B 到 A 的数据耦合。
 
 ---
 

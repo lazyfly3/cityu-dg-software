@@ -53,8 +53,48 @@ Noise, silence (missing features), over-specification (solution not problem), co
 #### English
 Iterative four steps: (1) Elicitation (understand problem), (2) Specification (describe), (3) Validation (agree on nature), (4) Negotiation (agree on boundaries). Validation is key to resolve ambiguity.
 
+**Elicitation Process (5 iterative activities)**:
+1. Understanding the application domain (political, organizational, social aspects, constraints)
+2. Identifying sources (people: stakeholders, users, experts; things: existing systems, documentation)
+3. Analyzing stakeholders (internal/external, customers, key representatives, product champions)
+4. Selecting techniques, approaches, and tools
+5. Eliciting requirements (establish scope, investigate needs, determine processes, examine support for objectives)
+
+**Common Elicitation Techniques**:
+- **Interview**: Three types - unstructured (exploratory, risky), structured (predetermined questions, Volere template), semi-structured (hybrid). Open-ended then close-ended questions.
+- **Brainstorming**: Group-based iterative idea gathering (Osborn's method)
+- **Task Analysis**: Top-down decomposition of high-level tasks into subtasks and detailed sequences; determines knowledge needed
+- **Scenario-Based Analysis**: User-oriented perspective; observe real scenarios, ask about uncovered cases
+- **Form Analysis**: Identify items (certain/varied) and timing (past/while filling/future) of information availability
+- **Focus Group**: Small demographically diverse group; guided/open discussions; analyst records vital points
+- **Facilitated Workshop**: Cross-functional team; study from all perspectives; make decisions
+- **Mind Mapping, Group Storytelling, User Stories**: Agile techniques (co-construct, share, complete, roleplay, analyze stories)
+- **Other techniques**: Delphi, ethnography, questionnaire, synthesis from existing system, domain analysis, BPR, prototyping
+
+**Expert Selection Guidance**: Interviewing (new projects/domains), Collaborative sessions (effective), Data gathering (must do, don't over-analyze), Agile techniques (popular), Questionnaires (not effective)
+
 #### 中文
 迭代的四步：① 需求获取（理解问题），② 规格说明（描述问题），③ 验证（认同问题本质），④ 协商（确定边界）。验证用于消除歧义。
+
+**需求获取流程（5 个迭代活动）**：
+1. 理解应用领域（政治、组织、社会方面，约束）
+2. 识别来源（人：利益相关者、用户、专家；物：现有系统、文档）
+3. 分析利益相关者（内部/外部、客户、关键代表、产品拥护者）
+4. 选择技术、方法和工具
+5. 获取需求（确定范围、调查需求、确定流程、检查对目标的支持）
+
+**常见获取技术**：
+- **访谈**：三种类型 - 非结构化（探索性，有风险）、结构化（预定问题，Volere 模板）、半结构化（混合）。先开放后封闭式问题。
+- **头脑风暴**：基于团队的迭代想法收集（Osborn 方法）
+- **任务分析**：自顶向下将高级任务分解为子任务和详细序列；确定所需知识
+- **场景分析**：面向用户的视角；观察真实场景，询问未覆盖的情况
+- **表单分析**：识别项目（确定/变化）和信息可用性的时间（过去/填写时/未来）
+- **焦点小组**：小型人口多样化小组；引导/开放讨论；分析员记录要点
+- **引导式研讨会**：跨职能团队；从所有角度研究；做出决策
+- **思维导图、群体故事、用户故事**：敏捷技术（共同构建、分享、完成、角色扮演、分析故事）
+- **其他技术**：德尔菲法、民族志、问卷、从现有系统综合、领域分析、BPR、原型
+
+**专家选择指导**：访谈（新项目/领域）、协作会议（有效）、数据收集（必须做，不要过度分析）、敏捷技术（流行）、问卷（无效）
 
 ---
 
@@ -116,14 +156,36 @@ Four positions combining objective/subjective and order/conflict:
 ## RE Artifacts & Validation / 需求工件与验证
 
 #### English
-- Elicitation techniques: interviews, observation, workshops, use cases/user stories, prototypes.
-- Specification: structured/semistructured docs, models (domain model, use-case model, sequence/state/DFD).
-- Validation/verification: reviews, walkthroughs, prototypes, acceptance tests; detect noise, silence, ambiguity, contradiction, wishful thinking.
-- Negotiation: resolve conflicts across stakeholders; prioritize requirements.
+- **Elicitation techniques**: interviews, observation, workshops, use cases/user stories, prototypes.
+- **Specification**: While collecting requirements, we should structure them:
+  - Hierarchical structure: Higher-level requirements decomposed into lower-level requirements
+  - Link requirements to specific stakeholders (e.g., management and end users each have their own set)
+  - Structured/semistructured docs, models (domain model, use-case model, sequence/state/DFD)
+- **Validation/verification**: 
+  - Inspection of requirement specification w.r.t. correctness, completeness, consistency, accuracy, readability, and testability
+  - Direct vs indirect links: Same requirements from multiple sources help reason validity. Lesson 1: don't rely too much on indirect links (intermediaries, surrogate users). Lesson 2: The more links, the better (but up to a point)
+  - Aids at different stages: Early structured walkthroughs with customers, prototypes of initial versions, test plan or unit testing in Agile development, user acceptance testing when delivery
+  - Detect noise, silence, ambiguity, contradiction, wishful thinking
+- **Negotiation**: 
+  - Apart from negotiating during elicitation, also negotiate when prioritizing requirements
+  - Label as "high", "medium", or "low" priority
+  - Use MoSCoW Method: Must haves (mandatory), Should haves (important but not mandatory), Could haves (if time allows), Won't haves (not today, may be tomorrow)
+  - Resolve conflicts across stakeholders
 
 #### 中文
-- 获取：访谈、观察、研讨会、用例/用户故事、原型。
-- 规格：结构化/半结构化文档，模型（领域模型、用例模型、时序/状态/数据流图）。
-- 验证：评审、走查、原型、验收测试；发现噪声、沉默、模糊、矛盾、空想。
-- 协商：解决多方冲突，做优先级排序。
+- **获取技术**：访谈、观察、研讨会、用例/用户故事、原型。
+- **规格说明**：在收集需求时，应结构化需求：
+  - 层次结构：高级需求分解为低级需求
+  - 将需求链接到特定利益相关者（如管理和最终用户各有自己的集合）
+  - 结构化/半结构化文档，模型（领域模型、用例模型、时序/状态/数据流图）
+- **验证/确认**：
+  - 检查需求规格的正确性、完整性、一致性、准确性、可读性和可测试性
+  - 直接 vs 间接链接：来自多个来源的相同需求有助于推理有效性。教训 1：不要过度依赖间接链接（中介、代理用户）。教训 2：链接越多越好（但有限度）
+  - 不同阶段的辅助：与客户的早期结构化走查、初始版本的原型、敏捷开发中的测试计划或单元测试、交付时的用户验收测试
+  - 发现噪声、沉默、模糊、矛盾、空想
+- **协商**：
+  - 除了在获取期间协商，还在确定优先级时协商
+  - 标记为"高"、"中"或"低"优先级
+  - 使用 MoSCoW 方法：必须有（强制）、应该有（重要但不强制）、可以有（如果时间允许）、不会有（今天不，可能明天）
+  - 解决利益相关者之间的冲突
 

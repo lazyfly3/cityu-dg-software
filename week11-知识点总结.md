@@ -111,12 +111,30 @@ Tactics: specialized interfaces, record/playback, abstract data sources, sandbox
 ## Version Management Details / 版本管理细节
 
 #### English
-- Concepts: codeline (version sequence), baseline (release definition = versions set), check-in/out, branching/merging.
-- VMS features: version/release ID, change history, independent dev support, project support, storage mgmt (diffs or Git compression/packing/dedup).
-- CI needs repeated baseline retrievals for automated build/test; branching strategies support parallel work.
+- **Concepts**: codeline (version sequence), baseline (release definition = versions set), check-in/out, branching/merging.
+- **VMS features**: version/release ID, change history, independent dev support, project support, storage mgmt (diffs or Git compression/packing/dedup).
+- **VMS types**: Centralized vs. Distributed systems vs. cloud-based
+- **CI needs**: Repeated baseline retrievals for automated build/test; branching strategies support parallel work.
+
+**Storage Management**:
+- **Traditional VMS (using Diff)**: Store deltas (differences) between versions, apply chain of operations to retrieve files
+- **Git Storage Management**: 
+  - Does NOT use deltas ("diffs")
+  - **Compression and Decompression**: Runs standard compression algorithm to compress stored files and meta-information. Retrieving involves decompressing, no need to apply chain of operations
+  - **Deduplication**: Does not store duplicate copies of files
+  - **Packing**: Uses packfiles where several smaller files are combined into an indexed single file (for faster access)
 
 #### 中文
-- 概念：代码线（版本序列）、基线（发布定义=版本集合）、检出/检入、分支/合并。
-- 功能：版本/发布标识、变更历史、独立开发支持、项目支持、存储管理（diff 或 Git 压缩/打包/去重）。
-- CI 需要反复获取基线做自动构建/测试；分支策略支撑并行开发。
+- **概念**：代码线（版本序列）、基线（发布定义=版本集合）、检出/检入、分支/合并。
+- **功能**：版本/发布标识、变更历史、独立开发支持、项目支持、存储管理（diff 或 Git 压缩/打包/去重）。
+- **类型**：集中式 vs 分布式系统 vs 基于云
+- **CI 需求**：反复获取基线做自动构建/测试；分支策略支撑并行开发。
+
+**存储管理**：
+- **传统 VMS（使用 Diff）**：存储版本之间的增量（差异），应用操作链来检索文件
+- **Git 存储管理**：
+  - 不使用增量（"diffs"）
+  - **压缩和解压缩**：运行标准压缩算法压缩存储的文件和元信息。检索涉及解压缩，无需应用操作链
+  - **去重**：不存储文件的重复副本
+  - **打包**：使用 packfiles，将多个较小文件合并为单个索引文件（以加快访问）
 

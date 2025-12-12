@@ -42,22 +42,82 @@ Program structure choices (where to place code) affect maintainability. Differen
 #### English
 Use styles/patterns to satisfy quality attributes. Example: fast startup → separate UI from state init, use MVC, initialize UI-related state first, support extensibility/compatibility.
 
+**Architectural Driver**: A design requirement that will influence software architects' early design decisions. Note: Functional features (functionality) are software requirements, not sufficient to serve as architectural drivers. Architecture deals with non-functional requirements (solutions with different quality to achieve the same functionality).
+
+**Example: Faster Payment System (FPS) vs Traditional Payment System**:
+- Both have same features (fund transfer, settlement)
+- Quality differences: Keeping (reliable, easy to use), Improvement (T+2 → real-time and always-on), Generalization (single platform → cross-platform), Extension (easy to add new features, single QR code standard)
+- Even if QR code is banned as a feature, FPS still needs to address other quality attributes
+
+**Quality Attributes**:
+- Observable via execution: performance, security, availability, functionality, usability
+- Not observable via execution: modifiability, portability, reusability, integrability, testability
+- Quality affects different aspects of software projects
+
+**Measurable/Testable**: Without knowing how far current system is from goal, designing to meet goal is impossible. Non-measurable: "see prices quickly". Measurable: "see latest and 4 historic prices of 20 cryptocurrencies in a second". If changed to "0.02 seconds", system requires more designs.
+
+**Quality Attributes Tradeoff**: Many pairs of "-litiity" form tradeoffs:
+- Improving privacy => lowering usability
+- Higher performance => lower interoperability
+- Higher modularity => longer time-to-market
+- Higher reliability => lower performance
+- Quicker time-to-market and lower cost => lower stability
+- We should evaluate impact on other quality attributes when addressing one
+
 #### 中文
 用架构风格/模式满足质量属性。例如快速启动 → 分离 UI 与状态初始化，使用 MVC，优先初始化影响 UI 的状态，支持可扩展性/兼容性。
+
+**架构驱动因素**：将影响软件架构师早期设计决策的设计需求。注意：功能特性（功能）是软件需求，不足以作为架构驱动因素。架构处理非功能需求（以不同质量实现相同功能的解决方案）。
+
+**示例：快速支付系统（FPS）vs 传统支付系统**：
+- 两者具有相同功能（资金转账、结算）
+- 质量差异：保持（可靠、易用）、改进（T+2 → 实时且始终在线）、泛化（单平台 → 跨平台）、扩展（易于添加新功能，单一二维码标准）
+- 即使二维码作为功能被禁止，FPS 仍需要解决其他质量属性
+
+**质量属性**：
+- 通过执行可观察：性能、安全性、可用性、功能性、易用性
+- 通过执行不可观察：可修改性、可移植性、可重用性、可集成性、可测试性
+- 质量影响软件项目的不同方面
+
+**可测量/可测试**：不知道当前系统距离目标有多远，就无法设计以满足目标。不可测量："快速查看价格"。可测量："在一秒内查看 20 种加密货币的最新和 4 个历史价格"。如果改为"0.02 秒"，系统需要更多设计。
+
+**质量属性权衡**：许多"-性"对形成权衡：
+- 提高隐私 => 降低易用性
+- 更高性能 => 更低互操作性
+- 更高模块化 => 更长上市时间
+- 更高可靠性 => 更低性能
+- 更快上市时间和更低成本 => 更低稳定性
+- 在解决一个质量属性时，应评估对其他质量属性的影响
 
 ---
 
 ## 4. Patterns & Styles / 4. 模式与风格
 
 #### English
-- Architectural styles: layering (e.g., OSI), MVC, etc.
-- Design patterns: observer, visitor, etc., for recurring design problems.
-- Strategy: assign quality attributes to modules (e.g., usability to View, interoperability to Controller) and constraints (e.g., Controller interoperation must not affect View).
+- **Architectural styles**: Description of component and connector types and runtime control/data transfer patterns. Examples:
+  - **Layered**: OSI 7-layer model, three-tier architecture (presentation/business/data)
+  - **Model-View-Controller (MVC)**: Model (core functionality/data), View (displays model), Controller (accepts input, updates model)
+  - **Blackboard**: Blackboard (problem/partial solution), Knowledge sources (specialized modules with Condition()/Action()), Control (monitors changes, selects/executes KS)
+  - **Client-Server**: Client requests, server responds; Master-Slave variant
+  - **Event-bus/Publish-Subscribe**: Source publishes to channel, subscribers subscribe to channel, channels grouped into bus
+  - **Pipe-and-Filter**: Data flows through series of transformations (filters) via pipes
+  - **Microkernel**: Core system (barebone), other features as plugins (InternalServer, ExternalServer, Adapter)
+- **Design patterns**: Observer, Visitor, etc., for recurring design problems.
+- **Enterprise Integration Patterns**: Content-Based Router, Splitter, Aggregator, Scatter-Aggregator Pair, etc., for connecting components to address quality attributes.
+- **Strategy**: Assign quality attributes to modules (e.g., usability to View, interoperability to Controller) and constraints (e.g., Controller interoperation must not affect View).
 
 #### 中文
-- 架构风格：分层（如 OSI）、MVC 等。
-- 设计模式：观察者、访问者等，用于复用设计解法。
-- 策略：为模块分配质量属性（如 View 负责易用性，Controller 负责互操作），并设定约束（如 Controller 互操作不影响 View）。
+- **架构风格**：组件和连接器类型及运行时控制/数据传输模式的描述。示例：
+  - **分层**：OSI 7 层模型，三层架构（表示/业务/数据）
+  - **模型-视图-控制器（MVC）**：模型（核心功能/数据）、视图（显示模型）、控制器（接受输入，更新模型）
+  - **黑板**：黑板（问题/部分解）、知识源（具有 Condition()/Action() 的专门模块）、控制（监控变化，选择/执行知识源）
+  - **客户端-服务器**：客户端请求，服务器响应；主从变体
+  - **事件总线/发布-订阅**：源发布到通道，订阅者订阅通道，通道分组到总线
+  - **管道-过滤器**：数据通过管道流经一系列转换（过滤器）
+  - **微内核**：核心系统（骨架），其他功能作为插件（内部服务器、外部服务器、适配器）
+- **设计模式**：观察者、访问者等，用于复用设计解法。
+- **企业集成模式**：基于内容的路由器、拆分器、聚合器、分散-聚合对等，用于连接组件以满足质量属性。
+- **策略**：为模块分配质量属性（如 View 负责易用性，Controller 负责互操作），并设定约束（如 Controller 互操作不影响 View）。
 
 ---
 

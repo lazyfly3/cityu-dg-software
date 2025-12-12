@@ -346,6 +346,8 @@ Every type of activity runs in parallel (vertically) with other types of activit
 - Each iteration must be short in duration in terms of time
 - All diagrams are rough sketches to ease communications
 
+**Process Flow**: Oral Requirements → Test Script Development → Coding → Testing → Deployment → Maintenance
+
 #### 中文
 
 **思想**：首先编写自动化测试用例，然后编写可以通过所有测试用例的代码的最小功能，再加上应用编码原则（或代码重构）以保持代码库更好地组织。
@@ -355,11 +357,15 @@ Every type of activity runs in parallel (vertically) with other types of activit
 - 每次迭代在时间上必须很短
 - 所有图表都是粗略草图，以方便沟通
 
+**流程**：口头需求 → 测试脚本开发 → 编码 → 测试 → 部署 → 维护
+
 ---
 
 ### Extreme Programming (XP) / 极限编程 (XP)
 
 #### English
+
+**Definition**: XP has no PM (project management). It is more lightweight than Scrum.
 
 **Five phases**:
 1. **Planning**: Meet with users, define user stories, and estimate story points. Plan for release through N iterations
@@ -419,24 +425,32 @@ Every type of activity runs in parallel (vertically) with other types of activit
 
 #### English
 
-**Definition**: A kind of agile development process. Arguably the most widely used development process nowadays. Driven by daily and periodic one-hour meetings.
+**Definition**: A kind of agile development process. Arguably the most widely used development process nowadays. Driven by daily and periodic one-hour meetings. Scrum has PM (but a less tedious process than XP) and other practices/activities/work products.
+
+**XP vs Scrum**: XP has no PM; Scrum has PM (but less tedious than XP) and other practices/activities/work products.
 
 **Key Concepts**:
-- **Product backlog**: A list of features desired for a final product, the bugs to be removed, technical work to set up and maintain development environment and user site, and knowledge to acquire by the project
-- **Sprint backlog**: A list of tasks to complete during a sprint. It is updated once a day
-- **Task board**: A visual representation of every task and what phase of completion it's in. Usually includes columns for stories, to-dos, work in process, things needing verification and items finished
-- **Release burndown chart**: Tracks progress on a project. The chart itself is updated after each sprint
+- **Product backlog**: A list of features desired for a final product, the bugs to be removed, technical work to set up and maintain development environment and user site, and knowledge to acquire by the project. Priority the product backlog.
+- **Sprint backlog**: A list of tasks to complete during a sprint. It is updated once a day. The size is determined by total story points the team can deliver within a cycle based on history.
+- **Task board**: A visual representation of every task and what phase of completion it's in. Usually includes columns for stories, to-dos, work in process, things needing verification and items finished. Tasks move: "to-do" → "in-progress" → "to verify" → "Done". Can be hung on wall or digitized.
+- **Release burndown chart**: Tracks progress on a project. The chart itself is updated after each sprint. Teams can measure progress in any unit they choose.
 
 **Process**:
 - Go through the usage scenarios/stories to identify a slice of highest priority backlog tasks to be completed by the next iteration (Sprint) agreed by the customer
 - Together with customers, discuss the goal of the current Sprint, prioritize functions to be completed and divided into detailed tasks
+- Through standing meeting, each team member picks an item from sprint backlog. Target is to deliver the user story in the cycle.
+- At the end of a sprint, conduct a sprint review (product owners/users verify whether user story is delivered) and a sprint retrospective (reflect on what's done right and what to improve)
 - Conduct periodic short planning and review meetings for tasks completed and not completed in time and revise the set of backlog tasks accordingly
-- Customers may change their mind at any time
+- Customers may change their mind at any time. Accept that requirements cannot be fully understood or defined. Focus on maximizing team's ability to deliver quickly and respond to selected backlog tasks.
+
+**Sprint Planning Meeting**: Product owner shows up with prioritized agile product backlog and describes top items to team. Team determines which items they can complete during coming sprint. Team moves items from product backlog to sprint backlog, expanding each product backlog item into one or more sprint backlog tasks.
 
 **Roles**:
-- **Scrum Master**: The team's coach and helps Scrum practitioners achieve their highest level of performance. This role does not provide day-to-day direction to the team and does not assign tasks to individuals
-- **Product Owner**: Responsible for prioritizing the backlog during Scrum development
-- **Scrum Development Team**: The team as a whole
+- **Scrum Master**: The team's coach and helps Scrum practitioners achieve their highest level of performance. This role does not provide day-to-day direction to the team and does not assign tasks to individuals. In many projects, this role is assumed by the project manager.
+- **Product Owner**: Responsible for prioritizing the backlog during Scrum development.
+- **Scrum Development Team**: The team as a whole.
+
+**Scheduled vs Actual**: When creating a release plan or sprint plan, PM needs a schedule. If project is delayed (e.g., at end of Week 7, 5 cycles completed but delayed), PM needs to take actions after each cycle: e.g., trim off some user stories and request team to deliver more story points per cycle.
 
 #### 中文
 
@@ -573,15 +587,18 @@ A burndown chart tracks the remaining story points over time. It shows:
 
 ## Additional Detail / 补充要点
 
-- 需求/设计/测试/部署/运维/配置/项目管理：每个活动需配套技术、交付物、工具，避免“只讲代码”视角
+- 需求/设计/测试/部署/运维/配置/项目管理：每个活动需配套技术、交付物、工具，避免"只讲代码"视角
 - 瀑布/V 型：阶段性验证目标明确，但需求/设计前置成本高、后期修复代价大
 - 原型/增量：先可用后完善，持续获取需求反馈；可并行子系统或逐步扩展需求子集
-- 螺旋：迭代式“目标-风险-开发-计划”循环，强调风险驱动和原型验证
+- 螺旋：迭代式"目标-风险-开发-计划"循环，强调风险驱动和原型验证
 - UP/RUP：多工种并行、分阶段多迭代；关注用例驱动、以架构为核心、迭代增量
+- XP vs Scrum：XP 无 PM，更轻量；Scrum 有 PM（但比 XP 更不繁琐）和其他实践/活动/工作产品
 - XP：小步快跑、结对编程、测试先行、持续集成、小版本发布、重构、隐喻/简单设计、40 小时周
 - Scrum：产品待办→冲刺待办→每日站会→评审+回顾；燃尽图、任务板、角色（PO/SM/团队）
 - Scrum 工件/会议：产品待办、冲刺待办、任务板、发布/冲刺燃尽图；计划会、每日站会、评审、回顾
 - XP 实践细化：小版本、隐喻、简单设计、测试先行、重构、结对编程、集体代码所有权、持续集成、现场客户、编码规范、开放工作区、40 小时周
 - 估算与速度：故事点锚定相对估算（斐波那契/T 恤尺码）；速度=每周期交付点数；燃尽图跟踪剩余点数
 - CI/CD：持续集成（每次提交自动构建+自测）；持续交付/部署（小批量、自动部署，开发对发布负责）
+- 流程改进趋势：并行阶段（技术开发与用户培训并行，每个并行轨道内开发与验证，更快前进、更早修复错误、降低成本）、向后迭代（从后期阶段反馈到早期阶段，改进早期阶段，避免不必要的返工或设计错误）
+- 敏捷方法对比：10 种敏捷方法，轻量级程度不同；包含项目管理活动的敏捷方法（如 Scrum）；轻量级且包含 PM 的敏捷方法（如 Scrum）
 
