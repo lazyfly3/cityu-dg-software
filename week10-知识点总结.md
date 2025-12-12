@@ -19,6 +19,10 @@ Goal: minimize failure-inducing inputs (or code) while preserving the same failu
 #### 中文
 目标：在仍能复现同样失败的前提下最小化触发失败的输入（或代码），以便调试。用例：导致浏览器崩溃的网页、致错的 UI 事件序列、编译器崩溃等。
 
+#### 通俗解释
+
+Delta Debugging就像找过敏源：如果你吃了10样东西后过敏，要找出到底是哪样。Delta Debugging就是不断缩小范围：先去掉一半，如果还过敏，说明问题在这一半里；如果不过敏，说明问题在另一半。这样不断缩小，最后找到最小的致敏源。代码调试也一样：如果1000行代码导致崩溃，不断缩小范围，找到最少几行代码就能复现问题，这样调试就容易多了。
+
 ---
 
 ## 2. Core Idea / 2. 核心思想
@@ -28,6 +32,10 @@ Hypothesis-driven reduction: repeatedly cut input (often by halves or chunks); i
 
 #### 中文
 基于假设的裁剪：反复剪掉输入（常对半或按块）；若仍触发失败则继续减，否则回退；迭代至最小的致错输入。
+
+#### 通俗解释
+
+就像玩"猜数字"游戏：如果1-100中有一个数字有问题，先猜50，如果50有问题，说明问题在1-50；如果50没问题，说明问题在51-100。然后继续对半猜，不断缩小范围，直到找到问题数字。Delta Debugging就是这样做：不断对半切分输入，保留能复现问题的部分，扔掉没问题的部分，最后找到最小的能复现问题的输入。
 
 ---
 
@@ -42,6 +50,10 @@ Hypothesis-driven reduction: repeatedly cut input (often by halves or chunks); i
 - HTML 崩溃：删大段文本，保留仍能崩溃的部分。
 - gcc 崩溃：删除程序片段并保持语法正确，定位最小致错代码。
 - Android 应用：缩短长 UI 事件序列且仍触发崩溃。
+
+#### 通俗解释
+
+Delta Debugging的示例就像"缩小问题范围"：**HTML崩溃**，如果1000行的HTML导致崩溃，不断删除大段，保留仍能崩溃的部分，最后可能只剩几行就能复现问题。**gcc崩溃**，如果1000行代码导致编译器崩溃，不断删除代码片段（保持语法正确），最后找到最少几行代码就能让编译器崩溃。**Android应用**，如果100个操作导致崩溃，不断缩短操作序列，最后可能只要3个操作就能复现。就像找过敏源，不断缩小范围。
 
 ---
 
@@ -61,6 +73,10 @@ Strategy: coarse-to-fine (half split, then random) to reduce test runs.
 4) 在失败子集上递归，直到无法再缩小。  
 策略：先粗后细（对半，再随机）以减少测试次数。
 
+#### 通俗解释
+
+Delta Debugging流程就像"不断缩小范围"：从能复现问题的输入开始，对半切分，测试一半，如果还失败就继续切这一半，如果不失败就试另一半。不断递归，直到无法再缩小。策略是先粗后细：先对半切（粗），如果对半不行再随机切（细），减少测试次数。就像找东西，先确定大概范围，再逐步缩小。
+
 ---
 
 ## 5. Outcome / 5. 效果
@@ -69,7 +85,11 @@ Strategy: coarse-to-fine (half split, then random) to reduce test runs.
 Produces a much smaller “failure-inducing input” that reproduces the bug, aiding root-cause analysis; can be applied to inputs, event sequences, or code fragments.
 
 #### 中文
-得到大幅缩小但仍能复现缺陷的“致错输入”，便于根因分析；可用于输入、事件序列或代码片段。
+得到大幅缩小但仍能复现缺陷的"致错输入"，便于根因分析；可用于输入、事件序列或代码片段。
+
+#### 通俗解释
+
+Delta Debugging的效果就像"找到最小复现步骤"：如果原来要1000行输入才能复现问题，经过Delta Debugging可能只要10行就能复现。这样调试就容易多了，因为范围小，容易找到问题。就像如果知道"吃10样东西后过敏"，很难找；如果知道"只吃这3样就过敏"，就容易找出是哪样。可以用于输入数据、操作序列、代码片段等。
 
 ---
 
@@ -85,6 +105,10 @@ Produces a much smaller “failure-inducing input” that reproduces the bug, ai
 
 **过程**：先粗粒度对半裁剪，若仍失败则继续细分。若不失败则回退尝试另一半或随机子集。
 
+#### 通俗解释
+
+Delta Debugging策略就像"先粗后细"：先对半切（粗粒度），如果还失败就继续切这一半，如果不失败就试另一半或随机子集。就像找东西，先确定大概范围，再逐步缩小。
+
 ---
 
 ### Delta Debugging Applicability / Delta Debugging 适用性
@@ -97,6 +121,10 @@ Produces a much smaller “failure-inducing input” that reproduces the bug, ai
 
 **用例**：文件/网页、事件序列、代码片段（需保持语法/格式合法）。可与模糊测试结合用于崩溃最小化。
 
+#### 通俗解释
+
+Delta Debugging适用性就像"能用在什么地方"：可以用于文件/网页（缩小导致崩溃的文件）、事件序列（缩小导致崩溃的操作序列）、代码片段（缩小导致编译错误的代码）。但要保持语法/格式合法。可以和模糊测试结合，模糊测试找到崩溃，Delta Debugging缩小崩溃输入。就像找过敏源，先知道大概范围，再缩小到具体东西。
+
 ---
 
 ### Success Criteria / 成功判据
@@ -108,6 +136,10 @@ Produces a much smaller “failure-inducing input” that reproduces the bug, ai
 #### 中文
 
 **要求**：保持同样的失败现象；最小化但可重现。
+
+#### 通俗解释
+
+成功判据就像"怎么算成功"：缩小后的输入要能复现同样的失败（比如同样的崩溃），而且要最小（不能再小了），还要能重现（每次都能复现）。就像找过敏源，找到后要能复现过敏症状，而且要找到最小的过敏源（不能再小了）。
 
 ---
 
