@@ -1,5 +1,39 @@
 # Week 8 Knowledge Summary - Code with Quality / Week 8 知识点总结 - 高质量代码
 
+## Table of Contents / 目录
+
+### 1. Basic Code Design Principles / 1. 基本代码设计原则
+- [Abstraction / 抽象](#abstraction--抽象)
+- [Information Hiding / 信息隐藏](#information-hiding--信息隐藏)
+- [Encapsulation / 封装](#encapsulation--封装)
+- [Coupling / 耦合](#coupling--耦合)
+- [Cohesion / 内聚](#cohesion--内聚)
+
+### 2. SOLID Principles / 2. SOLID 原则
+- [S - Single-Responsibility Principle (SRP) / S - 单一职责原则 (SRP)](#s---single-responsibility-principle-srp--s---单一职责原则-srp)
+- [O - Open-Closed Principle (OCP) / O - 开闭原则 (OCP)](#o---open-closed-principle-ocp--o---开闭原则-ocp)
+- [L - Liskov Substitution Principle (LSP) / L - 里氏替换原则 (LSP)](#l---liskov-substitution-principle-lsp--l---里氏替换原则-lsp)
+- [I - Interface Segregation Principle (ISP) / I - 接口隔离原则 (ISP)](#i---interface-segregation-principle-isp--i---接口隔离原则-isp)
+- [D - Dependency Inversion Principle (DIP) / D - 依赖倒置原则 (DIP)](#d---dependency-inversion-principle-dip--d---依赖倒置原则-dip)
+
+### 3. Code Smells / 3. 代码异味
+- [Impact on Code Stability and Bug Fix / 对代码稳定性和 Bug 修复的影响](#impact-on-code-stability-and-bug-fix--对代码稳定性和-bug-修复的影响)
+- [Impact on Program Comprehension / 对程序理解的影响](#impact-on-program-comprehension--对程序理解的影响)
+- [How to Automate Code Smells Detection? / 如何自动化检测代码异味？](#how-to-automate-code-smells-detection--如何自动化检测代码异味)
+
+### 4. Code Refactoring / 4. 代码重构
+- [Tool Support / 工具支持](#tool-support--工具支持)
+- [Why, What, and How to Refactor? / 为什么、什么以及如何重构？](#why-what-and-how-to-refactor--为什么什么以及如何重构)
+- [Refactoring Correctness and Implication / 重构的正确性和影响](#refactoring-correctness-and-implication--重构的正确性和影响)
+- [Summary / 总结](#summary--总结)
+
+### Additional Detail / 补充要点
+- [Additional Detail / 补充要点](#additional-detail--补充要点)
+- [Code Smells & Detection / 代码异味与检测](#code-smells--detection--代码异味与检测)
+- [Refactoring Process / 重构流程](#refactoring-process--重构流程)
+
+---
+
 ## 1. Basic Code Design Principles / 1. 基本代码设计原则
 
 ### Abstraction / 抽象

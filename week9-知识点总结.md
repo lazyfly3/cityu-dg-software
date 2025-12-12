@@ -1,5 +1,16 @@
 # Week 9 Knowledge Summary - Software Testing (Part 1) / Week 9 知识点总结 - 软件测试（上）
 
+## Table of Contents / 目录
+
+- [1. What is Program Testing? / 1. 什么是程序测试？](#1-what-is-program-testing--1-什么是程序测试)
+- [2. Testing Procedure (4 Steps) / 2. 测试流程（四步）](#2-testing-procedure-4-steps--2-测试流程四步)
+- [3. Automation & CI/CD / 3. 自动化与 CI/CD](#3-automation--cicd--3-自动化与-cicd)
+- [4. Making Software Testable / 4. 提升可测性](#4-making-software-testable--4-提升可测性)
+- [5. Fuzzing (Intro) / 5. 模糊测试（简介）](#5-fuzzing-intro--5-模糊测试简介)
+- [Additional Detail / 补充要点](#additional-detail--补充要点)
+
+---
+
 ## 1. What is Program Testing? / 1. 什么是程序测试？
 
 #### English

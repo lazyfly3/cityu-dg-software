@@ -1,5 +1,17 @@
 # Week 6 Knowledge Summary - Technical Debt / Week 6 知识点总结 - 技术债
 
+## Table of Contents / 目录
+
+- [1. Definition & Metaphor / 1. 定义与比喻](#1-definition--metaphor--1-定义与比喻)
+- [2. Lifecycle of TD / 2. 技术债生命周期](#2-lifecycle-of-td--2-技术债生命周期)
+- [3. What is NOT TD / 3. 不属于技术债](#3-what-is-not-td--3-不属于技术债)
+- [4. Practice Reality / 4. 实践现状](#4-practice-reality--4-实践现状)
+- [5. Dimensions of TD / 5. 技术债维度](#5-dimensions-of-td--5-技术债维度)
+- [6. Management Basics / 6. 管理要点](#6-management-basics--6-管理要点)
+- [Additional Detail / 补充要点](#additional-detail--补充要点)
+
+---
+
 ## 1. Definition & Metaphor / 1. 定义与比喻
 
 #### English

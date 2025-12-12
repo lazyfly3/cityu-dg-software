@@ -1,5 +1,16 @@
 # Week 10 Knowledge Summary - Testing (Part 2: Delta Debugging) / Week 10 知识点总结 - 测试（下：Delta Debugging）
 
+## Table of Contents / 目录
+
+- [1. Delta Debugging Motivation / 1. 动机](#1-delta-debugging-motivation--1-动机)
+- [2. Core Idea / 2. 核心思想](#2-core-idea--2-核心思想)
+- [3. Examples / 3. 示例](#3-examples--3-示例)
+- [4. Process Outline / 4. 流程概览](#4-process-outline--4-流程概览)
+- [5. Outcome / 5. 效果](#5-outcome--5-效果)
+- [Additional Detail / 补充要点](#additional-detail--补充要点)
+
+---
+
 ## 1. Delta Debugging Motivation / 1. 动机
 
 #### English

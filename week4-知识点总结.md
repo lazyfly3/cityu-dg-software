@@ -1,5 +1,19 @@
 # Week 4 Knowledge Summary - Requirements Engineering / Week 4 知识点总结 - 需求工程
 
+## Table of Contents / 目录
+
+- [1. What & Why / 1. 是什么与为何](#1-what--why--1-是什么与为何)
+- [2. Functional vs. Non-Functional / 2. 功能性 vs 非功能性](#2-functional-vs-non-functional--2-功能性-vs-非功能性)
+- [3. Common RE Pitfalls / 3. 常见问题](#3-common-re-pitfalls--3-常见问题)
+- [4. RE Main Steps / 4. RE 主要步骤](#4-re-main-steps--4-re-主要步骤)
+- [5. Conceptual Modeling / 5. 概念建模](#5-conceptual-modeling--5-概念建模)
+- [6. Analyst Positions / 6. 分析员立场](#6-analyst-positions--6-分析员立场)
+- [7. Good Practices / 7. 良好实践](#7-good-practices--7-良好实践)
+- [Additional Detail / 补充要点](#additional-detail--补充要点)
+- [RE Artifacts & Validation / 需求工件与验证](#re-artifacts--validation--需求工件与验证)
+
+---
+
 ## 1. What & Why / 1. 是什么与为何
 
 #### English

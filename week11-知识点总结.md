@@ -1,5 +1,19 @@
 # Week 11 Knowledge Summary - Software Maintenance & Testability Appendix / Week 11 知识点总结 - 软件维护与可测性附录
 
+## Table of Contents / 目录
+
+- [1. What is Maintenance / 1. 什么是维护](#1-what-is-maintenance--1-什么是维护)
+- [2. Reasons / 2. 原因](#2-reasons--2-原因)
+- [3. Maintenance Types / 3. 维护类型](#3-maintenance-types--3-维护类型)
+- [4. Typical Procedure / 4. 常规流程](#4-typical-procedure--4-常规流程)
+- [5. Challenges / 5. 挑战](#5-challenges--5-挑战)
+- [6. Version Management / 6. 版本管理](#6-version-management--6-版本管理)
+- [7. Appendix: Software Testability / 7. 附录：软件可测性](#7-appendix-software-testability--7-附录软件可测性)
+- [Additional Detail / 补充要点](#additional-detail--补充要点)
+- [Version Management Details / 版本管理细节](#version-management-details--版本管理细节)
+
+---
+
 ## 1. What is Maintenance / 1. 什么是维护
 
 #### English

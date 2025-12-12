@@ -1,5 +1,52 @@
 # Week 3 Knowledge Summary - Modern Code Review / Week 3 知识点总结 - 现代代码审查
 
+## Table of Contents / 目录
+
+### 1. What is Code Review? / 1. 什么是代码审查？
+- [Definition / 定义](#definition--定义)
+- [Purposes of Code Review / 代码审查的目的](#purposes-of-code-review--代码审查的目的)
+
+### 2. Different Levels of Formality / 2. 不同形式的正式程度
+- [Code Walkthrough / 代码走查](#code-walkthrough--代码走查)
+- [Code Inspection / 代码检查](#code-inspection--代码检查)
+- [Modern Code Review (MCR) / 现代代码审查 (MCR)](#modern-code-review-mcr--现代代码审查-mcr)
+
+### 3. Characteristics of Modern Code Review / 3. 现代代码审查的特点
+- [Informal / 非正式](#informal--非正式)
+- [Tool-based Logistics / 基于工具的后勤](#tool-based-logistics--基于工具的后勤)
+- [Asynchronous / 异步](#asynchronous--异步)
+- [Focus on Code Change / 专注于代码变更](#focus-on-code-change--专注于代码变更)
+
+### 4. Purposes of Reviews/Comments/Posts / 4. 审查/评论/帖子的目的
+- [Purposes of Reviews/Comments/Posts / 4. 审查/评论/帖子的目的](#purposes-of-reviewscommentsposts--4-审查评论帖子的目的)
+
+### 5. MCR Best Practices / 5. MCR 最佳实践
+- [General Best Practices / 一般最佳实践](#general-best-practices--一般最佳实践)
+- [MCR Best Practices in Google / Google 的 MCR 最佳实践](#mcr-best-practices-in-google--google-的-mcr-最佳实践)
+- [Reviewer Candidates / 审查者候选人](#reviewer-candidates--审查者候选人)
+
+### 6. MCR Issues / 6. MCR 问题
+- [Review Quality and Code Size / 审查质量和代码大小](#review-quality-and-code-size--审查质量和代码大小)
+- [Distance / 距离](#distance--距离)
+- [Social Interaction / 社交互动](#social-interaction--社交互动)
+- [Context / 上下文](#context--上下文)
+
+### 7. Other Topics / 7. 其他主题
+- [Should We Review Test Code too? / 我们也应该审查测试代码吗？](#should-we-review-test-code-too--我们也应该审查测试代码吗)
+- [How about a Review Patch is for Code Refactoring? / 审查补丁用于代码重构怎么样？](#how-about-a-review-patch-is-for-code-refactoring--审查补丁用于代码重构怎么样)
+- [How about Knowledge Transfer? / 知识转移怎么样？](#how-about-knowledge-transfer--知识转移怎么样)
+
+### 8. Strategy to Deal with Confusion / 8. 处理困惑的策略
+- [Strategy to Deal with Confusion / 8. 处理困惑的策略](#strategy-to-deal-with-confusion--8-处理困惑的策略)
+
+### 9. What Information is Needed by Reviewers? / 9. 审查者需要什么信息？
+- [What Information is Needed by Reviewers? / 9. 审查者需要什么信息？](#what-information-is-needed-by-reviewers--9-审查者需要什么信息)
+
+### Additional Detail / 补充要点
+- [Additional Detail / 补充要点](#additional-detail--补充要点)
+
+---
+
 ## 1. What is Code Review? / 1. 什么是代码审查？
 
 ### Definition / 定义

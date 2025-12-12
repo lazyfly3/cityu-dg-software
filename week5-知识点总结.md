@@ -1,5 +1,18 @@
 # Week 5 Knowledge Summary - Design Principles & Framework / Week 5 知识点总结 - 设计原则与框架
 
+## Table of Contents / 目录
+
+- [1. Program Structure & Modularity / 1. 程序结构与模块化](#1-program-structure--modularity--1-程序结构与模块化)
+- [2. Software Architecture Basics / 2. 软件架构基础](#2-software-architecture-basics--2-软件架构基础)
+- [3. Addressing Non-Functional Needs via Architecture / 3. 通过架构满足非功能需求](#3-addressing-non-functional-needs-via-architecture--3-通过架构满足非功能需求)
+- [4. Patterns & Styles / 4. 模式与风格](#4-patterns--styles--4-模式与风格)
+- [5. Design Refinement / 5. 设计细化](#5-design-refinement--5-设计细化)
+- [6. Practice Guidelines / 6. 实践要点](#6-practice-guidelines--6-实践要点)
+- [Additional Detail / 补充要点](#additional-detail--补充要点)
+- [Architecture Illustration / 架构示例（排序系统）](#architecture-illustration--架构示例排序系统)
+
+---
+
 ## 1. Program Structure & Modularity / 1. 程序结构与模块化
 
 #### English

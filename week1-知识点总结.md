@@ -1,5 +1,32 @@
 # Week 1 Knowledge Summary - Introduction & Course Project / Week 1 知识点总结 - 介绍与课程项目
 
+## Table of Contents / 目录
+
+### 1. Software Engineering Overview / 1. 软件工程概述
+- [What is Software Engineering? / 什么是软件工程？](#what-is-software-engineering--什么是软件工程)
+- [Programming vs. Software Engineering / 编程 vs. 软件工程](#programming-vs-software-engineering--编程-vs-软件工程)
+- [Software Development Lifecycle / 软件开发生命周期](#software-development-lifecycle--软件开发生命周期)
+- [Modern Software Development Team / 现代软件开发团队](#modern-software-development-team--现代软件开发团队)
+- [Modern Development Pattern / 现代开发模式](#modern-development-pattern--现代开发模式)
+- [Teaching Team & Schedule / 教学团队与进度](#teaching-team--schedule--教学团队与进度)
+- [The Next Decade of Software Engineering / 软件工程的未来十年](#the-next-decade-of-software-engineering--软件工程的未来十年)
+
+### 2. Course Project / 2. 课程项目
+- [Project Goal / 项目目标](#project-goal--项目目标)
+- [Project Size / 项目规模](#project-size--项目规模)
+- [Project Progress / 项目进度](#project-progress--项目进度)
+- [Project Mark Components / 项目评分组成部分](#project-mark-components--项目评分组成部分)
+- [Assessment & Milestones / 评估与里程碑](#assessment--milestones--评估与里程碑)
+- [Software Engineering Tool / 软件工程工具](#software-engineering-tool--软件工程工具)
+- [Project Recommendations / 项目建议](#project-recommendations--项目建议)
+- [Contributions of Team Members / 团队成员的贡献](#contributions-of-team-members--团队成员的贡献)
+- [Final Deliverable / 最终交付物](#final-deliverable--最终交付物)
+
+### Additional Detail / 补充要点
+- [Additional Detail / 补充要点](#additional-detail--补充要点)
+
+---
+
 ## 1. Software Engineering Overview / 1. 软件工程概述
 
 ### What is Software Engineering? / 什么是软件工程？
