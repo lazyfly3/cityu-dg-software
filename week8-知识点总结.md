@@ -1,0 +1,346 @@
+# Week 8 Knowledge Summary - Code with Quality / Week 8 知识点总结 - 高质量代码
+
+## 1. Basic Code Design Principles / 1. 基本代码设计原则
+
+### Abstraction / 抽象
+
+#### English
+
+Abstraction is a fundamental concept in programming theory that aims to avoid duplication of information and/or human effort. There are two main types:
+
+**Functional Abstraction**: Let C be a piece of code with a well-defined purpose. We put C into the body of a function having a function signature F. We say that F is an abstraction of C. A program P can include C once in the body of F and include one or more statements to call F instead of including multiple copies of C. Developers of the client code U of F need not comprehend the code C; rather, they can rely on the abstraction F and its well-defined functional purpose to complete their own tasks.
+
+**Data Abstraction**: If we abstract and group functions critically related to a data structure into a set, the set represents a single functional purpose of the data structure. Data Abstraction is to model the operators on a data structure as a set of related functions (called interfaces). In contrast, the data structure implementations are concealed by the interfaces.
+
+#### 中文
+
+抽象是编程理论中的基本概念，旨在避免信息重复和/或人工工作量的重复。主要有两种类型：
+
+**功能抽象**：设 C 是一段具有明确定义目的的代码。我们将 C 放入具有函数签名 F 的函数体中。我们说 F 是 C 的抽象。程序 P 可以在 F 的主体中包含 C 一次，并包含一个或多个调用 F 的语句，而不是包含多个 C 的副本。F 的客户端代码 U 的开发者不需要理解代码 C；相反，他们可以依赖抽象 F 及其明确定义的功能目的来完成自己的任务。
+
+**数据抽象**：如果我们将与数据结构密切相关的函数抽象并分组到一个集合中，该集合表示数据结构的单一功能目的。数据抽象是将数据结构上的操作建模为一组相关函数（称为接口）。相反，数据结构的具体实现被接口隐藏。
+
+---
+
+### Information Hiding / 信息隐藏
+
+#### English
+
+Information Hiding means that interfaces should be chosen to reveal as little as possible about its internal workings. We should ask whether the level of details specified in the parameters of an operator in an interface is essential. The goal is to remove details from the interfaces of a data structure by interrelating these interfaces.
+
+#### 中文
+
+信息隐藏意味着接口应该尽可能少地暴露其内部工作机制。我们应该询问接口中操作符参数指定的细节级别是否必要。目标是通过相互关联这些接口来从数据结构的接口中移除细节。
+
+---
+
+### Encapsulation / 封装
+
+#### English
+
+Encapsulation on X refers to ensuring outsiders cannot gain knowledge about certain information internal to X. X can be a class, a module, a file, a data record, etc. We achieve good encapsulation if we can describe the functional purpose using the least "working known-how" of the operators of a data structure and the functional signature does not specify more than what the functional purpose states. We can control the visibility of each data member or data method of a class to increase the level of encapsulation.
+
+#### 中文
+
+X 的封装是指确保外部无法获取 X 内部的某些信息。X 可以是类、模块、文件、数据记录等。如果我们能够使用数据结构操作符的最少"工作知识"来描述功能目的，并且功能签名指定的内容不超过功能目的所说明的内容，我们就实现了良好的封装。我们可以控制类的每个数据成员或数据方法的可见性来增加封装级别。
+
+---
+
+### Coupling / 耦合
+
+#### English
+
+Coupling is about syntactic dependency. Our aim is to minimize coupling in the code listing. An entity X is structurally and directly dependent on another entity Y at compile time. If X is changed (e.g., deleted/changed its datatype), then Y changes too. If Y changes, elements (say Z) depend on Y changes too. Z is indirectly dependent on X.
+
+There are six basic types of coupling (from worse to better):
+1. Content Coupling - directly use a part of code
+2. Common Coupling - global variable
+3. External Coupling - interface protocol, file
+4. Control Coupling - control flow, workflow pipeline
+5. Stamp Coupling - a part of a data structure
+6. Data Coupling - the whole data structure
+
+#### 中文
+
+耦合是关于语法依赖性的概念。我们的目标是最小化代码中的耦合。实体 X 在编译时在结构上直接依赖于另一个实体 Y。如果 X 被更改（例如，删除/更改其数据类型），那么 Y 也会改变。如果 Y 改变，依赖于 Y 的元素（比如 Z）也会改变。Z 间接依赖于 X。
+
+有六种基本类型的耦合（从差到好）：
+1. 内容耦合 - 直接使用代码的一部分
+2. 公共耦合 - 全局变量
+3. 外部耦合 - 接口协议、文件
+4. 控制耦合 - 控制流、工作流管道
+5. 标记耦合 - 数据结构的一部分
+6. 数据耦合 - 整个数据结构
+
+---
+
+### Cohesion / 内聚
+
+#### English
+
+Cohesion is about the reasons to place a set of entities together as a group or split them. We cannot see the dependency on cohesion from the code. Our aim: If two entities are related, they should be grouped together and/or used together.
+
+There are 7 types of cohesion (from worse to better):
+1. Coincidental - grouped without a reason
+2. Logical - grouped because "we" treat them as one category
+3. Temporal - A part of each entity in the group is processed similarly
+4. Procedural - A group of functions, when composed, represent different sequences of control
+5. Communicational - grouped because of operating on the same data
+6. Sequential - the input of one depends on the output of another
+7. Functional - to perform different aspects of a well-defined task
+
+Consequence: Higher cohesion and lower coupling together lead to higher quality: maintainability, reusability, and lower complexity.
+
+#### 中文
+
+内聚是关于将一组实体组合在一起或拆分它们的原因。我们无法从代码中看到对内聚的依赖。我们的目标：如果两个实体相关，它们应该被组合在一起和/或一起使用。
+
+有 7 种类型的内聚（从差到好）：
+1. 偶然内聚 - 没有理由地组合
+2. 逻辑内聚 - 因为"我们"将它们视为一个类别而组合
+3. 时间内聚 - 组中每个实体的一部分被类似处理
+4. 过程内聚 - 一组函数组合时表示不同的控制序列
+5. 通信内聚 - 因为操作相同数据而组合
+6. 顺序内聚 - 一个的输入依赖于另一个的输出
+7. 功能内聚 - 执行明确定义任务的不同方面
+
+结果：高内聚和低耦合共同导致更高的质量：可维护性、可重用性和更低的复杂性。
+
+---
+
+## 2. SOLID Principles / 2. SOLID 原则
+
+### S - Single-Responsibility Principle (SRP) / S - 单一职责原则 (SRP)
+
+#### English
+
+A responsibility is a logical reason to change the code. It is an abstract concept. The principle states that a class should have one and only one reason to be rewritten. A responsibility is not the assigned functionality of the class. It is a derived concept of maintaining good abstraction. If SRP is respected, then the responsibility means delivering the functional purpose of the class.
+
+#### 中文
+
+责任是改变代码的逻辑原因。它是一个抽象概念。该原则规定，一个类应该只有一个且仅有一个被重写的理由。责任不是类的指定功能。它是维护良好抽象的派生概念。如果遵循 SRP，那么责任意味着交付类的功能目的。
+
+---
+
+### O - Open-Closed Principle (OCP) / O - 开闭原则 (OCP)
+
+#### English
+
+Open-closed principle requires a code pattern to meet two conditions: Open for extension, and Close for modification. The basic rule of OCP is: (1) extend without modifying the existing code or (2) refine the implementation without changing the functional purpose and input/output arguments. Note that once a class's abstract/virtual method is set as "null" in a subclass, do not extend the method with additional code in any subclass of the former subclass.
+
+#### 中文
+
+开闭原则要求代码模式满足两个条件：对扩展开放，对修改关闭。OCP 的基本规则是：(1) 在不修改现有代码的情况下扩展，或 (2) 在不改变功能目的和输入/输出参数的情况下改进实现。注意，一旦子类将父类的抽象/虚方法设置为"null"，不要在该子类的任何子类中用附加代码扩展该方法。
+
+---
+
+### L - Liskov Substitution Principle (LSP) / L - 里氏替换原则 (LSP)
+
+#### English
+
+Suppose S is a subclass of T. (= T is a generalization of S). S can be reasoned in every client code C in the same way as T is reasoned in C. (= T's behavior is preserved by S). In this case, LSP is followed by the pair of S and T. S may refine or extend T:
+- S refines T: S and T compute the same result, but S implements a better algorithm or uses a better data structure
+- S extends T: S inherits everything from T and does extra things
+
+Example: Duck is an LSP-kind subclass of Bird. We can reason a duck as a bird whenever we reason the behavior of a bird in general.
+
+#### 中文
+
+假设 S 是 T 的子类（= T 是 S 的泛化）。S 可以在每个客户端代码 C 中以与 T 在 C 中相同的方式被推理（= S 保留了 T 的行为）。在这种情况下，S 和 T 这一对遵循 LSP。S 可以精化或扩展 T：
+- S 精化 T：S 和 T 计算相同结果，但 S 实现了更好的算法或使用更好的数据结构
+- S 扩展 T：S 继承 T 的所有内容并做额外的事情
+
+示例：Duck 是 Bird 的 LSP 类型子类。每当我们推理鸟的一般行为时，我们可以将鸭子推理为鸟。
+
+---
+
+### I - Interface Segregation Principle (ISP) / I - 接口隔离原则 (ISP)
+
+#### English
+
+ISP states that a client (of an interface) should not be forced to depend on methods (i.e., implement the methods) it does not use. Warning: ISP has no theoretical basis. It is a handy concept to avoid some problematic designs. For example, implementing too many dummy codes to conform to the interfaces for later use (which may never appear). Developers are forced to implement the dummy functions in an interface due to the programming language/compiler we chose to use.
+
+#### 中文
+
+ISP 规定，客户端（接口的）不应该被迫依赖它不使用的方法（即实现这些方法）。警告：ISP 没有理论基础。它是一个方便的概念，用于避免一些有问题的设计。例如，为实现接口而实现太多虚拟代码以供以后使用（可能永远不会出现）。由于我们选择的编程语言/编译器，开发者被迫在接口中实现虚拟函数。
+
+---
+
+### D - Dependency Inversion Principle (DIP) / D - 依赖倒置原则 (DIP)
+
+#### English
+
+DIP requires both conditions below to be held:
+1. High-level modules should not depend on low-level modules. Both should depend on abstractions.
+2. Abstractions should not depend on details. Details should depend on abstractions.
+
+**Dependency Injection**: At the top level, PolicyService is an interface, and yet a Policy object needs to call a concrete object. We may inject a dependency Mechanism object to the Policy object. Pass an object when constructing a Policy object. We need a Mechanism factory to create the former object.
+
+#### 中文
+
+DIP 要求满足以下两个条件：
+1. 高层模块不应该依赖于低层模块。两者都应该依赖于抽象。
+2. 抽象不应该依赖于细节。细节应该依赖于抽象。
+
+**依赖注入**：在顶层，PolicyService 是一个接口，但 Policy 对象需要调用具体对象。我们可以将依赖 Mechanism 对象注入到 Policy 对象中。在构造 Policy 对象时传递对象。我们需要一个 Mechanism 工厂来创建前一个对象。
+
+---
+
+## 3. Code Smells / 3. 代码异味
+
+#### English
+
+Code smell is a violation of a design principle and causes an adverse effect to the code. It is also known as anti-patterns. Code smell is a violation of a design principle and (potentially) harms the code. Novice developers tend to find it more difficult to judge the presence of them in their code. Code Review is a good source for the team to manage the code. Some static analysis tools can help detect code smells. Most of them are guidelines only. 22 patterns were identified initially, and more were identified afterwards.
+
+#### 中文
+
+代码异味是违反设计原则并导致代码产生不利影响的问题。它也被称为反模式。代码异味是违反设计原则并（可能）损害代码的问题。新手开发者往往更难判断代码中是否存在代码异味。代码审查是团队管理代码的良好来源。一些静态分析工具可以帮助检测代码异味。它们中的大多数只是指导原则。最初识别了 22 种模式，之后又识别了更多。
+
+---
+
+### Impact on Code Stability and Bug Fix / 对代码稳定性和 Bug 修复的影响
+
+#### English
+
+A study on ArgoUML, Eclipse, Mylyn, and Rhino, Azureus shows that:
+- Classes with code smells change more often than the otherwise.
+- They also incur more in issue-fixing or fix-bugging patches
+- Classes with more code smells change more often than the classes with less code smells
+
+It means that the code degraded.
+
+#### 中文
+
+对 ArgoUML、Eclipse、Mylyn 和 Rhino、Azureus 的研究表明：
+- 有代码异味的类比没有的类更频繁地改变
+- 它们也会导致更多的问题修复或修复错误的补丁
+- 有更多代码异味的类比有较少代码异味的类更频繁地改变
+
+这意味着代码质量下降了。
+
+---
+
+### Impact on Program Comprehension / 对程序理解的影响
+
+#### English
+
+A program comprehension study on code incurring Blob (i.e., code difficult to work with) and Spaghetti Code as code smells shows that programs incurring these two anti-patterns are more time consuming, need more effort, and lead developers to answer comprehension questions less correctly, but not reading more classes.
+
+#### 中文
+
+对包含 Blob（即难以处理的代码）和 Spaghetti Code 作为代码异味的程序理解研究表明，包含这两种反模式的程序更耗时，需要更多努力，导致开发者回答理解问题的正确率更低，但不会阅读更多类。
+
+---
+
+### How to Automate Code Smells Detection? / 如何自动化检测代码异味？
+
+#### English
+
+Formulate what constitute a code smell. Then, mine the code to extract entities and compute metric values. Many open-source code can generate the control flow graph or AST of a project written in any programming language. There are also many code projects to compute various metrics. AST: Abstract Syntax Tree.
+
+#### 中文
+
+制定构成代码异味的规则。然后，挖掘代码以提取实体并计算度量值。许多开源代码可以生成用任何编程语言编写的项目的控制流图或 AST。还有许多代码项目可以计算各种度量指标。AST：抽象语法树。
+
+---
+
+## 4. Code Refactoring / 4. 代码重构
+
+#### English
+
+Refactoring is to improve code structure and organization. Triggering points: code review and in code maintenance. A refactoring process includes: identify code that needs refactoring, apply refactoring techniques, verify correctness of refactoring, and test to ensure functionality is unchanged.
+
+#### 中文
+
+重构是改进代码结构和组织。触发点：代码审查和代码维护。重构过程包括：识别需要重构的代码，应用重构技术，验证重构的正确性，以及测试以确保功能未改变。
+
+---
+
+### Tool Support / 工具支持
+
+#### English
+
+Every good IDE (e.g., Eclipse, Visual Studio) has a menu of popular refactoring to assist developers to manage their code. Use them or do it manually. Press "Alt + Shift + T" in Eclipse. Press "Ctrl + ." in Visual Studio.
+
+#### 中文
+
+每个好的 IDE（如 Eclipse、Visual Studio）都有一个流行的重构菜单来协助开发者管理代码。使用它们或手动执行。在 Eclipse 中按 "Alt + Shift + T"。在 Visual Studio 中按 "Ctrl + ."。
+
+---
+
+### Why, What, and How to Refactor? / 为什么、什么以及如何重构？
+
+#### English
+
+A study on Windows development team in Microsoft shows that developers perform manually, improve code readability and maintainability, worry about regression bugs and build breaks. The symptoms of code that help developers initiate refactoring include code smells, technical debt, and maintainability issues.
+
+#### 中文
+
+对微软 Windows 开发团队的研究表明，开发者手动执行，提高代码可读性和可维护性，担心回归错误和构建中断。帮助开发者启动重构的代码症状包括代码异味、技术债务和可维护性问题。
+
+---
+
+### Refactoring Correctness and Implication / 重构的正确性和影响
+
+#### English
+
+Refactoring may improve or deteriorate code. We need to carefully verify the correctness of refactoring. Not all refactoring is always useful. A study by Lacerda et al. (2020) shows that refactoring can improve or deteriorate code quality.
+
+#### 中文
+
+重构可能改善或恶化代码。我们需要仔细验证重构的正确性。并非所有重构都总是有用的。Lacerda 等人（2020）的研究表明，重构可以改善或恶化代码质量。
+
+---
+
+### Summary / 总结
+
+#### English
+
+Maintaining code structure is important. Accumulating problems in the code will lead to have more code changes, more latent bugs, and less comprehensible code "in the future". Manage the amount of code smells in code. Refactor the code to improve code readability and maintainability, either manually or with tool assistance, if developers are confident about validation of changes and able to handle code changes across different branches in version control system. Note that removing all of them is never an option.
+
+#### 中文
+
+维护代码结构很重要。代码中积累的问题将导致未来更多的代码更改、更多的潜在错误和更不易理解的代码。管理代码中代码异味的数量。如果开发者对更改的验证有信心，并且能够处理版本控制系统中不同分支的代码更改，则重构代码以提高代码可读性和可维护性（手动或使用工具辅助）。注意，删除所有代码异味从来不是一个选项。
+
+---
+
+## Additional Detail / 补充要点
+
+- 基础概念：抽象（目的与接口分离）、信息隐藏（接口少暴露）、封装（限制内部知识曝光）；高内聚低耦合提升可维护/复用/复杂度控制
+- 耦合类型（坏→好）：内容、公用、外部、控制、标记、数据；内聚类型（坏→好）：偶然、逻辑、时间、过程、通信、顺序、功能
+- SOLID 关注：SRP 单一变更理由；OCP 扩展开放/修改关闭；LSP 可替换子类；ISP 拆分接口避免无用实现；DIP 高层依赖抽象、依赖注入
+- 代码异味影响：提升变更频率、缺陷率、理解成本；静态度量（CBO/WMC/LOC/ATFD/LAA 等）可辅助自动化检测
+- 重构实践：在不改行为下优化结构；触发点=评审/维护/异味；IDE 自动化（重命名、提取函数/类、移动、内联等）；需配套测试防回归
+- 不必“清零”异味，需评估收益/风险/成本，将异味/技术债纳入待办优先级管理
+
+---
+
+## Code Smells & Detection / 代码异味与检测
+
+#### English
+- Code smell = violation of design principles; anti-patterns that harm maintainability/readability/evolution.
+- Impacts: classes with smells change more often, incur more bug-fixing patches; smells like Blob/Spaghetti increase comprehension time and reduce accuracy.
+- Detection: static analysis + metrics (e.g., CBO, WMC, LOC, ATFD, LAA, CC, LCOM, NOM, NPATH); AST/CFG mining; tools (SonarQube, PMD, Checkstyle, IDE inspections).
+- Not all smells must be removed; prioritize by risk/impact.
+
+#### 中文
+- 代码异味=违背设计原则的反模式，损害可维护性/可读性/演化性。
+- 影响：带异味的类更高变更率、更多缺陷修复；Blob/Spaghetti 等增加理解时间、降低正确率。
+- 检测：静态分析+度量（如 CBO、WMC、LOC、ATFD、LAA、圈复杂度、LCOM、NOM、NPATH）；AST/CFG 挖掘；工具（SonarQube、PMD、Checkstyle、IDE 检查）。
+- 不是所有异味都要立刻清除，按风险/影响排序处理。
+
+---
+
+## Refactoring Process / 重构流程
+
+#### English
+- Trigger: code review, maintenance, smell detection.
+- Steps: identify smell → choose refactoring → small safe steps → run tests → commit → review.
+- Common refactorings: extract/inline method/class, rename, move, pull up/push down, replace temp with query, introduce parameter object, simplify conditional, reduce duplication.
+- Tooling: IDE automated refactors; CI + tests guard regressions.
+
+#### 中文
+- 触发：代码评审、维护、异味检测。
+- 步骤：识别异味→选重构手法→小步安全修改→跑测试→提交→复审。
+- 常见手法：提取/内联方法/类，重命名，移动，提升/下移，替换临时变量，引入参数对象，简化条件，消除重复。
+- 工具：IDE 自动重构；CI+测试防回归。

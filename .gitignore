@@ -1,0 +1,14 @@
+# PDF files
+*.pdf
+
+# PDF text files
+*.pdf.txt
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDE files
+.vscode/
+.idea/
+
