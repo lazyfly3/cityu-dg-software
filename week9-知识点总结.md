@@ -135,12 +135,75 @@ Use stubs/mocks and dependency injection to isolate modules (e.g., replace Class
 
 ## Additional Detail / 补充要点
 
-- 测试目标示例：澄清需求（示例驱动），验收/系统/集成/安全测试，回归保护，异常与边界路径
-- 设计与执行：数据准备、桩/Mock/依赖注入隔离被测单元；持续集成中自动化运行
-- 结果分析自动化：断言、自检、日志/崩溃收集，对比期望输出，减少人工判读
-- CI/CD 实践：小步提交，每次提交构建+单测；预生产回归；快速失败反馈
-- 可测性设计：可控性（可注入依赖/数据/时钟）、可观测性（日志/指标/事件）、减少耦合与非确定性
-- 模糊测试要点：生成策略（随机/变异/字典）、覆盖引导、崩溃最小化（可结合 delta debugging）
+### Test Objectives Examples / 测试目标示例
+
+#### English
+
+**Purposes**: Clarify requirements (example-driven), acceptance/system/integration/security testing, regression protection, exception and boundary paths.
+
+#### 中文
+
+**目的**：澄清需求（示例驱动），验收/系统/集成/安全测试，回归保护，异常与边界路径。
+
+---
+
+### Test Design and Execution / 设计与执行
+
+#### English
+
+**Isolation**: Data preparation, stubs/mocks/dependency injection to isolate units under test. Automated execution in continuous integration.
+
+#### 中文
+
+**隔离**：数据准备、桩/Mock/依赖注入隔离被测单元。持续集成中自动化运行。
+
+---
+
+### Automated Result Analysis / 结果分析自动化
+
+#### English
+
+**Methods**: Assertions, self-checks, log/crash collection, compare expected output, reduce manual interpretation.
+
+#### 中文
+
+**方法**：断言、自检、日志/崩溃收集，对比期望输出，减少人工判读。
+
+---
+
+### CI/CD Practices / CI/CD 实践
+
+#### English
+
+**Workflow**: Small commits, build + unit test on every commit; pre-production regression; rapid failure feedback.
+
+#### 中文
+
+**工作流**：小步提交，每次提交构建 + 单测；预生产回归；快速失败反馈。
+
+---
+
+### Testability Design / 可测性设计
+
+#### English
+
+**Key Aspects**: Controllability (injectable dependencies/data/clocks), observability (logs/metrics/events), reduce coupling and non-determinism.
+
+#### 中文
+
+**关键方面**：可控性（可注入依赖/数据/时钟）、可观测性（日志/指标/事件）、减少耦合与非确定性。
+
+---
+
+### Fuzzing Key Points / 模糊测试要点
+
+#### English
+
+**Strategies**: Generation strategies (random/mutation/dictionary), coverage-guided, crash minimization (can combine with delta debugging).
+
+#### 中文
+
+**策略**：生成策略（随机/变异/字典）、覆盖引导、崩溃最小化（可结合 delta debugging）。
 
 ### Scientific Debugging / 科学调试
 

@@ -485,14 +485,99 @@ Reviewers need various types of information to effectively review code changes:
 
 ## Additional Detail / 补充要点
 
-- 代码走查：效果接近测试，但人力成本高；远程/无障碍场景需更多语音/屏幕阅读器支持
-- 代码检查（Fagan）：正式、同步、角色分工、检查清单，会前（自审+教育）、会中（逐段检查、问答）、会后（整改与验证），工具次要
-- MCR 特征：轻量、异步、聚焦 patch、小变更、小团队；工具（GitHub/Gerrit/ReviewBoard/Phabricator/邮件/IM）
-- 审查目的：缺陷、可读性/可维护性、方案讨论、知识传递、规范一致性、事故预防、把关（gate-keeping）
-- 好实践（Google 等）：改动小、响应快（常 1–5h）、每周审查时间中位约 4h、轮换审查者、自动化风格/静态检查补充人工
-- 常见问题：复杂代码讨论少→发布后缺陷多；地理/组织距离；语气/权力带来的沟通障碍；上下文预期不一致
-- 测试代码审查：应审但频率较低，关注测试质量/覆盖/策略；重构相关 patch 也应明确动机与范围
-- 典型工具用法：GitHub PR 逐行评论/文件展开、Gerrit 变更集、邮件/IM 异步讨论
+### Code Walkthrough / 代码走查
+
+#### English
+
+**Effectiveness**: Code walkthrough is nearly as effective as testing in finding bugs, but has high human resource costs. In remote/accessibility scenarios, more voice/screen reader support is needed.
+
+#### 中文
+
+**效果**：代码走查在发现错误方面几乎与测试一样有效，但人力成本高。在远程/无障碍场景中，需要更多语音/屏幕阅读器支持。
+
+---
+
+### Code Inspection (Fagan) / 代码检查（Fagan）
+
+#### English
+
+**Characteristics**: Formal, synchronous, role-based division of labor, checklist-based. Process includes: before meeting (self-review + education), during meeting (section-by-section review, Q&A), after meeting (fix and verification). Tools are secondary.
+
+#### 中文
+
+**特点**：正式、同步、角色分工、检查清单。流程包括：会前（自审 + 教育）、会中（逐段检查、问答）、会后（整改与验证）。工具次要。
+
+---
+
+### MCR Characteristics / MCR 特征
+
+#### English
+
+**Key Features**: Lightweight, asynchronous, focused on patches, small changes, small teams. Tools include GitHub, Gerrit, ReviewBoard, Phabricator, email, IM.
+
+#### 中文
+
+**关键特征**：轻量、异步、聚焦 patch、小变更、小团队。工具包括 GitHub、Gerrit、ReviewBoard、Phabricator、邮件、IM。
+
+---
+
+### Review Purposes / 审查目的
+
+#### English
+
+**Multiple Purposes**: Finding defects, improving readability/maintainability, discussing alternative solutions, knowledge transfer, ensuring consistency with standards, accident prevention, gate-keeping (quality control).
+
+#### 中文
+
+**多重目的**：发现缺陷、提高可读性/可维护性、讨论替代方案、知识传递、确保规范一致性、事故预防、把关（质量控制）。
+
+---
+
+### Good Practices (e.g., Google) / 好实践（如 Google）
+
+#### English
+
+**Best Practices**: Small changes, fast response (often 1-5 hours), median review time about 4 hours per week, rotate reviewers, automated style/static checks supplement manual review.
+
+#### 中文
+
+**最佳实践**：改动小、响应快（常 1–5h）、每周审查时间中位约 4h、轮换审查者、自动化风格/静态检查补充人工。
+
+---
+
+### Common Problems / 常见问题
+
+#### English
+
+**Challenges**: Complex code gets less discussion → more defects after release; geographical/organizational distance; communication barriers from tone/power dynamics; inconsistent context expectations.
+
+#### 中文
+
+**挑战**：复杂代码讨论少 → 发布后缺陷多；地理/组织距离；语气/权力带来的沟通障碍；上下文预期不一致。
+
+---
+
+### Test Code Review / 测试代码审查
+
+#### English
+
+**Guidelines**: Test code should be reviewed but at lower frequency. Focus on test quality, coverage, and strategy. Refactoring-related patches should also clearly state motivation and scope.
+
+#### 中文
+
+**指导原则**：测试代码应审查但频率较低。关注测试质量、覆盖和策略。重构相关 patch 也应明确动机与范围。
+
+---
+
+### Typical Tool Usage / 典型工具用法
+
+#### English
+
+**Tool Features**: GitHub PR line-by-line comments/file expansion, Gerrit change sets, email/IM asynchronous discussion.
+
+#### 中文
+
+**工具特性**：GitHub PR 逐行评论/文件展开、Gerrit 变更集、邮件/IM 异步讨论。
 
 ### In-Class Activity MCR-2 / 课堂活动 MCR-2
 

@@ -392,8 +392,34 @@ Suggest using contributed efforts (e.g., hours or story points) in determining t
 
 ## Additional Detail / 补充要点
 
-- 课程评估权重：出勤 10%，测验 15%（第 7 周），论文调研 10%（第 11 周），团队项目 25%（第 13 周），期末考试 40%（需≥30% 考试分）
-- 项目证据：代码提交/分支、Issue、评审记录、测试报告、燃尽图、站会纪要，需在报告中引用
-- 敏捷实践：每周至少一次站会；三段冲刺，及时回顾与改进；技术债识别与跟踪
-- 展示建议：聚焦背景/痛点、关键技术问题、方案与创新点、验收场景与数据、用户/同伴反馈
-- 报告建议：IEEE TSE 模板；突出创新性、方法论、实验/评估设计，附团队贡献表与自省
+### Course Assessment Details / 课程评估详情
+
+#### English
+
+**Course Assessment Weighting**:
+- Course Work: 50% (Quiz 15% in Week 7, Survey of Research Papers 10% in Week 11, Team-Based Code Project 25% in Week 13)
+- Attendance: 10%
+- Exam: 40% (For a student to pass the course, at least 30% of the maximum mark for the examination must be obtained)
+
+**Project Evidence Requirements**: Code commits/branches, Issues, review records, test reports, burndown charts, standing meeting minutes. These must be cited in the final report to serve as evidence of activities conducted during the project period.
+
+**Agile Practices**: At least one standing meeting per week; three sprints with timely retrospectives and improvements; technical debt identification and tracking.
+
+**Presentation Suggestions**: Focus on background/pain points, key technical problems, solutions and innovation points, acceptance scenarios and data, user/peer feedback.
+
+**Report Suggestions**: Use IEEE TSE template; highlight innovation, methodology, experimental/evaluation design, include team contribution table and self-reflection.
+
+#### 中文
+
+**课程评估权重**：
+- 课程作业：50%（测验 15% 第 7 周，论文调研 10% 第 11 周，团队项目 25% 第 13 周）
+- 出勤：10%
+- 期末考试：40%（学生要通过课程，必须获得至少 30% 的考试最高分）
+
+**项目证据要求**：代码提交/分支、Issue、评审记录、测试报告、燃尽图、站会纪要。这些必须在最终报告中引用，作为项目期间进行活动的证据。
+
+**敏捷实践**：每周至少一次站会；三段冲刺，及时回顾与改进；技术债识别与跟踪。
+
+**展示建议**：聚焦背景/痛点、关键技术问题、方案与创新点、验收场景与数据、用户/同伴反馈。
+
+**报告建议**：使用 IEEE TSE 模板；突出创新性、方法论、实验/评估设计，附团队贡献表与自省。

@@ -227,13 +227,31 @@ Completely produce the full set of deliverables of each activity before starting
 
 Similar to waterfall model but with stagewise validation goals. Each development stage has a corresponding testing/validation stage.
 
-**Advantages**: Stagewise Validation Goal
+**Phases and Validation Targets**:
+- Requirements → User Acceptance Test (validation target)
+- Design → System Testing (validation target)
+- Coding/Implementation → Unit Testing / Integration Testing (validation target)
+- Software Build → Testing
+- Deployment → Maintenance
+
+**Backward transition**: From a later phase to an earlier phase is possible.
+
+**Advantages**: Stagewise Validation Goal - each development phase has a clear validation target.
 
 #### 中文
 
 类似于瀑布模型，但具有阶段性验证目标。每个开发阶段都有相应的测试/验证阶段。
 
-**优点**：阶段性验证目标
+**阶段和验证目标**：
+- 需求 → 用户验收测试（验证目标）
+- 设计 → 系统测试（验证目标）
+- 编码/实现 → 单元测试 / 集成测试（验证目标）
+- 软件构建 → 测试
+- 部署 → 维护
+
+**向后转换**：可以从后期阶段转换到早期阶段。
+
+**优点**：阶段性验证目标 - 每个开发阶段都有明确的验证目标。
 
 ---
 
@@ -247,6 +265,13 @@ Similar to waterfall model but with stagewise validation goals. Each development
 
 **Lesson Learnt**: Cost of fixing bugs at earlier stage is cheaper. An artifact that can be validated should be validated as early as possible.
 
+**Implications on Following the Waterfall Model** (Facts):
+- 7% of Software Development Projects are cancelled before completion
+- 89% cost more than their original budget
+- Only 42% completed on time and within budget, but only 42% of the original requirements can be implemented
+- We would rather have a gracefully degraded subsystem (a partial system, a system of lower quality) instead of no system at the end!
+- An artifact of an early release subsystem that can be validated should be validated as early as possible
+
 #### 中文
 
 1. **对活动阶段的错误认识**：在设计软件之前完全确定实际需求是不现实的。纠正上游活动中产生的问题也非常昂贵。
@@ -254,6 +279,13 @@ Similar to waterfall model but with stagewise validation goals. Each development
 2. **在全部完成之前什么也没有完成**：如果我们在设计阶段结束项目，那么就没有任何代码交付给项目客户，但我们的客户希望有一些可执行的东西来帮助他们的业务！
 
 **经验教训**：在早期阶段修复错误的成本更便宜。可以验证的工件应该尽早验证。
+
+**遵循瀑布模型的影响**（事实）：
+- 7% 的软件开发项目在完成前被取消
+- 89% 超过原始预算
+- 只有 42% 按时按预算完成，但只实现了 42% 的原始需求
+- 我们宁愿有一个优雅降级的子系统（部分系统、质量较低的系统），而不是最终没有系统！
+- 可以验证的早期发布子系统的工件应该尽早验证
 
 ---
 
@@ -587,18 +619,89 @@ A burndown chart tracks the remaining story points over time. It shows:
 
 ## Additional Detail / 补充要点
 
-- 需求/设计/测试/部署/运维/配置/项目管理：每个活动需配套技术、交付物、工具，避免"只讲代码"视角
-- 瀑布/V 型：阶段性验证目标明确，但需求/设计前置成本高、后期修复代价大
-- 原型/增量：先可用后完善，持续获取需求反馈；可并行子系统或逐步扩展需求子集
-- 螺旋：迭代式"目标-风险-开发-计划"循环，强调风险驱动和原型验证
-- UP/RUP：多工种并行、分阶段多迭代；关注用例驱动、以架构为核心、迭代增量
-- XP vs Scrum：XP 无 PM，更轻量；Scrum 有 PM（但比 XP 更不繁琐）和其他实践/活动/工作产品
-- XP：小步快跑、结对编程、测试先行、持续集成、小版本发布、重构、隐喻/简单设计、40 小时周
-- Scrum：产品待办→冲刺待办→每日站会→评审+回顾；燃尽图、任务板、角色（PO/SM/团队）
-- Scrum 工件/会议：产品待办、冲刺待办、任务板、发布/冲刺燃尽图；计划会、每日站会、评审、回顾
-- XP 实践细化：小版本、隐喻、简单设计、测试先行、重构、结对编程、集体代码所有权、持续集成、现场客户、编码规范、开放工作区、40 小时周
-- 估算与速度：故事点锚定相对估算（斐波那契/T 恤尺码）；速度=每周期交付点数；燃尽图跟踪剩余点数
-- CI/CD：持续集成（每次提交自动构建+自测）；持续交付/部署（小批量、自动部署，开发对发布负责）
-- 流程改进趋势：并行阶段（技术开发与用户培训并行，每个并行轨道内开发与验证，更快前进、更早修复错误、降低成本）、向后迭代（从后期阶段反馈到早期阶段，改进早期阶段，避免不必要的返工或设计错误）
-- 敏捷方法对比：10 种敏捷方法，轻量级程度不同；包含项目管理活动的敏捷方法（如 Scrum）；轻量级且包含 PM 的敏捷方法（如 Scrum）
+### SE Process Activities Perspective / 软件工程过程活动视角
+
+#### English
+
+**Comprehensive Activity Coverage**: Each activity (requirements, design, testing, deployment, operations, configuration, project management) needs to be accompanied by techniques, deliverables, and tools. Avoid a "code-only" perspective that overlooks other critical activities.
+
+#### 中文
+
+**全面的活动覆盖**：每个活动（需求、设计、测试、部署、运维、配置、项目管理）都需要配套技术、交付物和工具。避免"只讲代码"的视角，忽视其他关键活动。
+
+---
+
+### Process Model Comparisons / 过程模型对比
+
+#### English
+
+**Waterfall/V-Shape Models**: Stagewise validation goals are clear, but requirements/design upfront costs are high, and fixing problems in later stages is expensive.
+
+**Prototyping/Incremental Models**: Deliver usable system first, then improve. Continuously obtain requirement feedback. Can parallel subsystems or gradually expand requirement subsets.
+
+**Spiral Model**: Iterative "objectives-risk-development-planning" cycle emphasizing risk-driven approach and prototype validation.
+
+**UP/RUP**: Multiple roles work in parallel, phased multiple iterations. Focus on use-case driven, architecture-centric, iterative incremental development.
+
+#### 中文
+
+**瀑布/V 型模型**：阶段性验证目标明确，但需求/设计前置成本高，后期修复代价大。
+
+**原型/增量模型**：先可用后完善，持续获取需求反馈。可并行子系统或逐步扩展需求子集。
+
+**螺旋模型**：迭代式"目标-风险-开发-计划"循环，强调风险驱动和原型验证。
+
+**UP/RUP**：多工种并行、分阶段多迭代。关注用例驱动、以架构为核心、迭代增量。
+
+---
+
+### Agile Methods Details / 敏捷方法细节
+
+#### English
+
+**XP vs Scrum**: XP has no PM and is more lightweight. Scrum has PM (but less tedious than XP) and other practices/activities/work products.
+
+**XP Practices**: Small rapid iterations, pair programming, test-first, continuous integration, small releases, refactoring, metaphor/simple design, 40-hour week, collective code ownership, on-site customer, coding standards, open workspace.
+
+**Scrum Workflow**: Product backlog → Sprint backlog → Daily standup → Review + Retrospective. Uses burndown charts, task boards, roles (PO/SM/Team).
+
+**Scrum Artifacts/Meetings**: Product backlog, sprint backlog, task board, release/sprint burndown charts; Planning meeting, daily standup, review, retrospective.
+
+**Estimation and Velocity**: Story points use relative estimation with anchors (Fibonacci/T-shirt sizes). Velocity = story points delivered per cycle. Burndown chart tracks remaining story points.
+
+#### 中文
+
+**XP vs Scrum**：XP 无 PM，更轻量。Scrum 有 PM（但比 XP 更不繁琐）和其他实践/活动/工作产品。
+
+**XP 实践**：小步快跑、结对编程、测试先行、持续集成、小版本发布、重构、隐喻/简单设计、40 小时周、集体代码所有权、现场客户、编码规范、开放工作区。
+
+**Scrum 工作流**：产品待办 → 冲刺待办 → 每日站会 → 评审 + 回顾。使用燃尽图、任务板、角色（PO/SM/团队）。
+
+**Scrum 工件/会议**：产品待办、冲刺待办、任务板、发布/冲刺燃尽图；计划会、每日站会、评审、回顾。
+
+**估算与速度**：故事点使用锚定相对估算（斐波那契/T 恤尺码）。速度 = 每周期交付点数。燃尽图跟踪剩余点数。
+
+---
+
+### CI/CD and Process Improvement / CI/CD 与流程改进
+
+#### English
+
+**CI/CD**: Continuous Integration (automated build + self-test on every commit); Continuous Delivery/Deployment (small batches, automated deployment, developers own deployment and get rapid failure notice).
+
+**Process Improvement Trends**:
+- **Parallel Stages**: Technical development and user training run in parallel. Development and validation within each parallel track. Quicker for each track to move forward, earlier to rectify bugs, lower cost.
+- **Backward Iterations**: Feedback from later phases to earlier phases. Improve earlier stages whenever necessary. Avoid unnecessary rework or design bugs by working out more accurate requirements.
+
+**Agile Methods Comparison**: 10 kinds of agile methods with different levels of lightweight. Agile methods that include project management activities (e.g., Scrum). Lightweight agile methods that include PM (e.g., Scrum).
+
+#### 中文
+
+**CI/CD**：持续集成（每次提交自动构建 + 自测）；持续交付/部署（小批量、自动部署，开发对发布负责并快速获知故障）。
+
+**流程改进趋势**：
+- **并行阶段**：技术开发与用户培训并行。每个并行轨道内开发与验证。更快前进、更早修复错误、降低成本。
+- **向后迭代**：从后期阶段反馈到早期阶段。必要时改进早期阶段。通过制定更准确的需求避免不必要的返工或设计错误。
+
+**敏捷方法对比**：10 种敏捷方法，轻量级程度不同。包含项目管理活动的敏捷方法（如 Scrum）。轻量级且包含 PM 的敏捷方法（如 Scrum）。
 

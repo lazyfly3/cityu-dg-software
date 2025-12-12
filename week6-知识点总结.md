@@ -134,10 +134,77 @@ Common classification:
 
 ## Additional Detail / 补充要点
 
-- 意图性：有意债（知情权衡，如暂不支持多平台、暂缺测试）、无意债（经验/流程不足导致）
-- 类型示例：设计债、代码债、测试债、文档债、需求债、构建/环境债、架构债等
-- 利息表现：缺测试→开发/调试变慢；架构脆弱→改动牵一发动全身；支持成本高；构建/调试周期长
-- 还债方式：重构、补测试、补文档、改进架构/环境；需时间盒与优先级管理
-- 取舍：业务可能用短期交付换长期效率，需量化利息与机会成本（速度、质量、风险）
-- 记录：TD 不应仅在“影子”待办，应显式入待办并在冲刺中评估/调度
+### Technical Debt Intentionality / 技术债意图性
+
+#### English
+
+**Intentional Debt**: Informed trade-offs (e.g., temporarily not supporting multiple platforms, temporarily missing tests).
+
+**Unintentional Debt**: Caused by lack of experience or insufficient processes.
+
+#### 中文
+
+**有意债**：知情权衡（如暂不支持多平台、暂缺测试）。
+
+**无意债**：经验/流程不足导致。
+
+---
+
+### Technical Debt Types / 技术债类型
+
+#### English
+
+**Examples**: Design debt, code debt, test debt, documentation debt, requirements debt, build/environment debt, architecture debt, etc.
+
+#### 中文
+
+**类型示例**：设计债、代码债、测试债、文档债、需求债、构建/环境债、架构债等。
+
+---
+
+### Interest Manifestations / 利息表现
+
+#### English
+
+**Costs**: Missing tests → slower development/debugging; fragile architecture → changes affect everything; high support costs; long build/debug cycles.
+
+#### 中文
+
+**成本**：缺测试 → 开发/调试变慢；架构脆弱 → 改动牵一发动全身；支持成本高；构建/调试周期长。
+
+---
+
+### Debt Repayment Methods / 还债方式
+
+#### English
+
+**Strategies**: Refactoring, adding tests, adding documentation, improving architecture/environment. Requires time-boxing and priority management.
+
+#### 中文
+
+**策略**：重构、补测试、补文档、改进架构/环境。需时间盒与优先级管理。
+
+---
+
+### Trade-offs / 取舍
+
+#### English
+
+**Business Decisions**: Business may trade short-term delivery for long-term efficiency. Need to quantify interest and opportunity costs (speed, quality, risk).
+
+#### 中文
+
+**业务决策**：业务可能用短期交付换长期效率。需量化利息与机会成本（速度、质量、风险）。
+
+---
+
+### Technical Debt Tracking / 技术债记录
+
+#### English
+
+**Visibility**: TD should not only be in "shadow" backlog. Should be explicitly added to backlog and evaluated/scheduled in sprints.
+
+#### 中文
+
+**可见性**：TD 不应仅在"影子"待办。应显式入待办并在冲刺中评估/调度。
 

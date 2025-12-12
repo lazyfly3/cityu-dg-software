@@ -144,12 +144,87 @@ Four positions combining objective/subjective and order/conflict:
 
 ## Additional Detail / 补充要点
 
-- 非功能需求别名：质量属性、系统特性/约束、concerns、goals、extra/quality requirements；跨行业/应用类型/具体场景层层细化
-- 需求规约常见问题：噪声、沉默、过度规范、矛盾、模糊、前向引用、空想；自然语言高风险，需验证与评审
-- RE 四步迭代：获取（访谈/观察/用例/用户故事）、规格（结构化/半结构化）、验证（评审/原型/试用）、协商（冲突解决/优先级）
-- 概念建模：显式领域模型以澄清术语与边界，分析消歧，协商多方目标
-- 分析员立场影响方法：功能主义（客观+秩序）、社会相对主义（主观+秩序）、激进结构主义（客观+冲突）、新人文主义（主观+冲突）
-- 非功能若不可度量/验证，需设计可观测指标或用户评估方法（如性能 SLA、安全合规、可用性可用性测试）
+### Non-Functional Requirements Terminology / 非功能需求术语
+
+#### English
+
+**Alternative Names**: Quality attributes, system characteristics/constraints, concerns, goals, extra/quality requirements. These are refined across layers: industry → application type → specific scenarios.
+
+#### 中文
+
+**别名**：质量属性、系统特性/约束、concerns、goals、extra/quality requirements。跨行业/应用类型/具体场景层层细化。
+
+---
+
+### Common Problems in Requirement Specification / 需求规约常见问题
+
+#### English
+
+**Issues**: Noise, silence, over-specification, contradiction, ambiguity, forward references, wishful thinking. Natural language is high-risk and requires validation and review.
+
+#### 中文
+
+**问题**：噪声、沉默、过度规范、矛盾、模糊、前向引用、空想。自然语言高风险，需验证与评审。
+
+---
+
+### RE Four-Step Iteration / RE 四步迭代
+
+#### English
+
+**Iterative Process**: (1) Elicitation (interviews/observation/use cases/user stories), (2) Specification (structured/semi-structured), (3) Validation (review/prototype/trial), (4) Negotiation (conflict resolution/prioritization).
+
+#### 中文
+
+**迭代过程**：① 获取（访谈/观察/用例/用户故事），② 规格（结构化/半结构化），③ 验证（评审/原型/试用），④ 协商（冲突解决/优先级）。
+
+---
+
+### Conceptual Modeling / 概念建模
+
+#### English
+
+**Purpose**: Explicit domain models clarify terminology and boundaries, analyze and resolve ambiguity, negotiate multiple stakeholder goals.
+
+#### 中文
+
+**目的**：显式领域模型以澄清术语与边界，分析消歧，协商多方目标。
+
+---
+
+### Analyst Positions and Methods / 分析员立场与方法
+
+#### English
+
+**Four Positions**:
+- **Functionalism**: Objective + order
+- **Social Relativism**: Subjective + order
+- **Radical Structuralism**: Objective + conflict
+- **Neo-Humanism**: Subjective + conflict
+
+Analyst position influences the choice of requirements engineering methods.
+
+#### 中文
+
+**四种立场**：
+- **功能主义**：客观 + 秩序
+- **社会相对主义**：主观 + 秩序
+- **激进结构主义**：客观 + 冲突
+- **新人文主义**：主观 + 冲突
+
+分析员立场影响需求工程方法的选择。
+
+---
+
+### Non-Functional Requirements Measurement / 非功能需求度量
+
+#### English
+
+**If Non-Measurable/Non-Verifiable**: Design observable indicators or user evaluation methods (e.g., performance SLA, security compliance, usability testing).
+
+#### 中文
+
+**若不可度量/验证**：需设计可观测指标或用户评估方法（如性能 SLA、安全合规、可用性测试）。
 
 ---
 

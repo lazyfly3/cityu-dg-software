@@ -147,12 +147,75 @@ Design requirements emerge gradually; refine architecture to meet them (e.g., se
 
 ## Additional Detail / 补充要点
 
-- Parnas 提示：功能分解 vs 面向对象分解对变更影响范围巨大；信息隐藏与完整性是关键
-- 架构关注概念层与上下文：重要的质量属性、演化原则、关键场景，而非实现细节
-- MVC 示例：为快速启动/扩展/兼容，将 UI、状态、控制分离；UI 相关模型可分层，控制器需确保互操作不破坏视图
-- 设计需求渐进显现：安全（UI 层认证）、可用性（数据层冗余）、正确性（可测性或多版本编程）等需在架构层落位
-- 架构/设计模式：分层、MVC、Observer、Visitor 等，用于复用结构和交互方案
-- 架构文档：记录模块职责、接口、质量属性分配与约束、关键场景/视图（逻辑/开发/进程/部署），而非具体算法/代码
+### Parnas's Insights / Parnas 提示
+
+#### English
+
+**Decomposition Impact**: Functional decomposition vs object-oriented decomposition have huge differences in the scope of change impact. Information hiding and integrity are key.
+
+#### 中文
+
+**分解影响**：功能分解 vs 面向对象分解对变更影响范围巨大。信息隐藏与完整性是关键。
+
+---
+
+### Architecture Focus / 架构关注点
+
+#### English
+
+**Conceptual Layer and Context**: Architecture focuses on important quality attributes, evolution principles, and key scenarios, not implementation details.
+
+#### 中文
+
+**概念层与上下文**：架构关注重要的质量属性、演化原则、关键场景，而非实现细节。
+
+---
+
+### MVC Example / MVC 示例
+
+#### English
+
+**Separation for Quality**: For fast startup, extensibility, and compatibility, separate UI, state, and control. UI-related models can be layered. Controllers must ensure interoperability does not break views.
+
+#### 中文
+
+**质量分离**：为快速启动/扩展/兼容，将 UI、状态、控制分离。UI 相关模型可分层，控制器需确保互操作不破坏视图。
+
+---
+
+### Progressive Design Requirements / 设计需求渐进显现
+
+#### English
+
+**Architectural Placement**: Design requirements emerge progressively (e.g., security via UI layer authentication, availability via data layer redundancy, correctness via testability or N-version programming). These need to be addressed at the architectural level.
+
+#### 中文
+
+**架构层落位**：设计需求渐进显现（如安全通过 UI 层认证、可用性通过数据层冗余、正确性通过可测性或多版本编程）。这些需在架构层落位。
+
+---
+
+### Architectural/Design Patterns / 架构/设计模式
+
+#### English
+
+**Reusable Solutions**: Layering, MVC, Observer, Visitor, etc. Used to reuse structural and interaction solutions.
+
+#### 中文
+
+**可复用方案**：分层、MVC、Observer、Visitor 等，用于复用结构和交互方案。
+
+---
+
+### Architecture Documentation / 架构文档
+
+#### English
+
+**What to Document**: Record module responsibilities, interfaces, quality attribute allocation and constraints, key scenarios/views (logical/development/process/deployment), not specific algorithms/code.
+
+#### 中文
+
+**文档内容**：记录模块职责、接口、质量属性分配与约束、关键场景/视图（逻辑/开发/进程/部署），而非具体算法/代码。
 
 ---
 

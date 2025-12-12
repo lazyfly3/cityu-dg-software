@@ -100,11 +100,63 @@ Tactics: specialized interfaces, record/playback, abstract data sources, sandbox
 
 ## Additional Detail / 补充要点
 
-- 维护类型细分：适应性/完善性/纠错性/预防性，文献中还有再工程、退役、环境迁移等更细分类
-- 维护难点：理解他人代码、结构不佳、缺文档与上下文、人员流动、系统未为变更设计
-- 版本管理要点：分支/合并、基线定义、变更历史、并行开发支持、存储（diff/pack、Git 压缩去重）、CI 取基线自动构建
-- 维护流程融入敏捷/CI：任务→理解→方案→评审→实现→验证，与持续集成/交付流水线衔接
-- 可测性战术落地：依赖注入/接口隔离提升可控性；日志/指标/事件/可观察性平台提升可观测性；降低非确定性（避免无界并发/全局共享）
+### Maintenance Types Detail / 维护类型细分
+
+#### English
+
+**Categories**: Adaptive, perfective, corrective, preventive. Literature also includes re-engineering, retirement, environment migration, and other finer classifications.
+
+#### 中文
+
+**分类**：适应性/完善性/纠错性/预防性。文献中还有再工程、退役、环境迁移等更细分类。
+
+---
+
+### Maintenance Challenges / 维护难点
+
+#### English
+
+**Difficulties**: Understanding others' code, poor structure, lack of documentation and context, personnel turnover, system not designed for change.
+
+#### 中文
+
+**困难**：理解他人代码、结构不佳、缺文档与上下文、人员流动、系统未为变更设计。
+
+---
+
+### Version Management Key Points / 版本管理要点
+
+#### English
+
+**Features**: Branching/merging, baseline definition, change history, parallel development support, storage (diff/pack, Git compression/deduplication), CI retrieves baseline for automated build.
+
+#### 中文
+
+**特性**：分支/合并、基线定义、变更历史、并行开发支持、存储（diff/pack、Git 压缩去重）、CI 取基线自动构建。
+
+---
+
+### Maintenance Process Integration / 维护流程融入敏捷/CI
+
+#### English
+
+**Workflow**: Task → Understanding → Solution → Review → Implementation → Verification. Integrates with continuous integration/delivery pipeline.
+
+#### 中文
+
+**工作流**：任务 → 理解 → 方案 → 评审 → 实现 → 验证。与持续集成/交付流水线衔接。
+
+---
+
+### Testability Tactics Implementation / 可测性战术落地
+
+#### English
+
+**Strategies**: Dependency injection/interface isolation to improve controllability; logs/metrics/events/observability platforms to improve observability; reduce non-determinism (avoid unbounded concurrency/global sharing).
+
+#### 中文
+
+**策略**：依赖注入/接口隔离提升可控性；日志/指标/事件/可观察性平台提升可观测性；降低非确定性（避免无界并发/全局共享）。
 
 ---
 

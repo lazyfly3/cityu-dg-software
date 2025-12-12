@@ -396,12 +396,89 @@ Maintaining code structure is important. Accumulating problems in the code will 
 
 ## Additional Detail / 补充要点
 
-- 基础概念：抽象（目的与接口分离）、信息隐藏（接口少暴露）、封装（限制内部知识曝光）；高内聚低耦合提升可维护/复用/复杂度控制
-- 耦合类型（坏→好）：内容、公用、外部、控制、标记、数据；内聚类型（坏→好）：偶然、逻辑、时间、过程、通信、顺序、功能
-- SOLID 关注：SRP 单一变更理由；OCP 扩展开放/修改关闭；LSP 可替换子类；ISP 拆分接口避免无用实现；DIP 高层依赖抽象、依赖注入
-- 代码异味影响：提升变更频率、缺陷率、理解成本；静态度量（CBO/WMC/LOC/ATFD/LAA 等）可辅助自动化检测
-- 重构实践：在不改行为下优化结构；触发点=评审/维护/异味；IDE 自动化（重命名、提取函数/类、移动、内联等）；需配套测试防回归
-- 不必“清零”异味，需评估收益/风险/成本，将异味/技术债纳入待办优先级管理
+### Fundamental Concepts / 基础概念
+
+#### English
+
+**Core Principles**: Abstraction (separate purpose from interface), Information Hiding (minimize interface exposure), Encapsulation (restrict internal knowledge exposure). High cohesion and low coupling improve maintainability, reusability, and complexity control.
+
+#### 中文
+
+**核心原则**：抽象（目的与接口分离）、信息隐藏（接口少暴露）、封装（限制内部知识曝光）。高内聚低耦合提升可维护/复用/复杂度控制。
+
+---
+
+### Coupling and Cohesion Types / 耦合和内聚类型
+
+#### English
+
+**Coupling Types** (worse → better): Content, Common, External, Control, Stamp, Data.
+
+**Cohesion Types** (worse → better): Coincidental, Logical, Temporal, Procedural, Communicational, Sequential, Functional.
+
+#### 中文
+
+**耦合类型**（坏 → 好）：内容、公用、外部、控制、标记、数据。
+
+**内聚类型**（坏 → 好）：偶然、逻辑、时间、过程、通信、顺序、功能。
+
+---
+
+### SOLID Principles / SOLID 原则
+
+#### English
+
+**Five Principles**:
+- **SRP**: Single reason to change
+- **OCP**: Open for extension, closed for modification
+- **LSP**: Subclasses should be substitutable
+- **ISP**: Split interfaces to avoid unused implementations
+- **DIP**: High-level modules depend on abstractions, dependency injection
+
+#### 中文
+
+**五个原则**：
+- **SRP**：单一变更理由
+- **OCP**：扩展开放/修改关闭
+- **LSP**：可替换子类
+- **ISP**：拆分接口避免无用实现
+- **DIP**：高层依赖抽象、依赖注入
+
+---
+
+### Code Smell Impact / 代码异味影响
+
+#### English
+
+**Effects**: Increase change frequency, defect rate, and understanding cost. Static metrics (CBO, WMC, LOC, ATFD, LAA, etc.) can assist automated detection.
+
+#### 中文
+
+**影响**：提升变更频率、缺陷率、理解成本。静态度量（CBO/WMC/LOC/ATFD/LAA 等）可辅助自动化检测。
+
+---
+
+### Refactoring Practice / 重构实践
+
+#### English
+
+**Process**: Optimize structure without changing behavior. Triggers: review/maintenance/smells. IDE automation (rename, extract function/class, move, inline, etc.). Requires accompanying tests to prevent regression.
+
+#### 中文
+
+**过程**：在不改行为下优化结构。触发点：评审/维护/异味。IDE 自动化（重命名、提取函数/类、移动、内联等）。需配套测试防回归。
+
+---
+
+### Code Smell Management / 代码异味管理
+
+#### English
+
+**Strategy**: Don't need to "zero out" all smells. Need to evaluate benefits/risks/costs, incorporate smells/technical debt into backlog priority management.
+
+#### 中文
+
+**策略**：不必"清零"异味。需评估收益/风险/成本，将异味/技术债纳入待办优先级管理。
 
 ---
 

@@ -75,11 +75,63 @@ Produces a much smaller “failure-inducing input” that reproduces the bug, ai
 
 ## Additional Detail / 补充要点
 
-- 策略：先粗粒度对半裁剪，若仍失败则继续细分；若不失败则回退尝试另一半或随机子集
-- 适用：文件/网页、事件序列、代码片段（需保持语法/格式合法）；可与模糊测试结合用于崩溃最小化
-- 成功判据：保持同样的失败现象；最小化但可重现
-- 注意：裁剪时需保证可执行/可编译；必要时手动修复语法
-- 目标：减少调试搜索空间，加快定位根因
+### Delta Debugging Strategy / Delta Debugging 策略
+
+#### English
+
+**Process**: Start with coarse-grained binary reduction. If still fails, continue subdividing. If doesn't fail, backtrack to try the other half or random subset.
+
+#### 中文
+
+**过程**：先粗粒度对半裁剪，若仍失败则继续细分。若不失败则回退尝试另一半或随机子集。
+
+---
+
+### Delta Debugging Applicability / Delta Debugging 适用性
+
+#### English
+
+**Use Cases**: Files/web pages, event sequences, code snippets (must maintain syntax/format validity). Can combine with fuzzing for crash minimization.
+
+#### 中文
+
+**用例**：文件/网页、事件序列、代码片段（需保持语法/格式合法）。可与模糊测试结合用于崩溃最小化。
+
+---
+
+### Success Criteria / 成功判据
+
+#### English
+
+**Requirements**: Maintain the same failure phenomenon; minimized but reproducible.
+
+#### 中文
+
+**要求**：保持同样的失败现象；最小化但可重现。
+
+---
+
+### Delta Debugging Considerations / Delta Debugging 注意事项
+
+#### English
+
+**Constraints**: When reducing, must ensure executability/compilability. Manually fix syntax if necessary.
+
+#### 中文
+
+**约束**：裁剪时需保证可执行/可编译。必要时手动修复语法。
+
+---
+
+### Delta Debugging Goal / Delta Debugging 目标
+
+#### English
+
+**Purpose**: Reduce debugging search space, speed up root cause localization.
+
+#### 中文
+
+**目的**：减少调试搜索空间，加快定位根因。
 
 ---
 
