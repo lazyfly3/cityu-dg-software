@@ -2,27 +2,61 @@
 
 ### 1. Software Process (Agile/Scrum) / 软件过程（敏捷 / Scrum）
 
+- **通俗理解**：这部分就是讲“敏捷团队怎么组织人和活儿”，包括谁负责什么、每天怎么开会、怎么估算工作量、怎么看进度。
+
 - **Scrum Roles, Events, Artifacts / Scrum 的角色、事件与工件**  
   - **EN**: Scrum defines roles (Product Owner, Scrum Master, Development Team), events (Sprint, Sprint Planning, Daily Scrum, Sprint Review, Sprint Retrospective), and artifacts (Product Backlog, Sprint Backlog, Increment).  
-  - **中**：Scrum 里有三类**角色**（产品负责人负责 backlog 排优先级，Scrum 主管负责流程与障碍清理，开发团队负责交付增量）、一组固定的**事件**（迭代、计划会、每日站会、评审会、回顾会），以及**工件**（产品待办列表、迭代待办列表、可以交付的增量）。
+  - **中**：Scrum 里有三类**角色**、一组固定的**事件**，以及**工件**。  
+  - **详细说明（PDF）**：
+    
+    **角色（Roles）**：
+    - **Product Owner（产品负责人）**：负责维护**优先级明确的 Product Backlog**（包含功能、bug、技术工作、知识获取等），在 Sprint Planning 中向团队描述高优先级项，在 Sprint Review 中与用户一起验证用户故事是否已交付，并演示完成的增量。
+    - **Scrum Master（Scrum 主管）**：是团队的**教练**，帮助团队达到最佳表现；**不提供日常指导**，**不分配任务给个人**；主要职责是**移除障碍、维护 Scrum 流程**；在很多项目中，这个角色由项目经理担任。
+    - **Development Team（开发团队）**：作为**整体**自主工作，通过每日站会从 Sprint Backlog 中**自主选择任务**，负责在 Sprint 内交付用户故事和增量；任务在 Task Board 上可视化（to-do → in-progress → to verify → Done）。
+    
+    **事件（Events）**：
+    - **Sprint Planning（Sprint 计划会）**：Product Owner 带着优先级排序的 Product Backlog 参会，向团队描述**高优先级项**；团队根据历史速度（story points）决定**能在即将到来的 Sprint 中完成哪些项**；团队将选中的 Product Backlog 项**展开成一个或多个 Sprint Backlog 任务**，并放到 Task Board 的 "to-do" 列。
+    - **Daily Scrum（每日站会）**：**15 分钟站立会议**，每人用约 3 分钟报告：（1）昨天做了什么；（2）今天准备做什么；（3）遇到什么阻碍（其他队友可帮助解决）。目的是快速同步进度、尽早暴露问题。
+    - **Sprint Review（Sprint 评审会）**：在 Sprint 结束时举行，**Product Owner 和用户验证用户故事是否已交付**；如果通过，将任务移到 Task Board 的 "Done" 列；团队**演示已完成的增量**给干系人看。
+    - **Sprint Retrospective（Sprint 回顾会）**：在 Sprint Review 之后举行，团队**反思什么做得好、什么需要改进**，以减少阻碍、提升生产力；可以讨论流程、工具、沟通等方面的问题。
+    - **Sprint（迭代）**：一个固定时长的周期（通常 1-4 周），团队在这个周期内完成一组选定的用户故事；每个 Sprint 结束时必须产出**可交付的增量**。
+    
+    **工件（Artifacts）**：
+    - **Product Backlog（产品待办列表）**：包含**最终产品所需的功能、待修复的 bug、技术工作**（如搭建和维护开发环境、用户站点）以及**知识获取**（如学习新框架）；需要**持续维护优先级**；是动态的，客户可以随时改变想法。
+    - **Sprint Backlog（Sprint 待办列表）**：从 Product Backlog 中选出的**高优先级子集**，大小由团队历史速度（story points）决定；包含**具体任务**，**每天更新一次**；任务在 Task Board 上可视化流转。
+    - **Increment（增量）**：每个 Sprint 结束时产出的**可交付、可演示的功能**，必须通过 Product Owner 和用户的验收；多个 Sprint 的增量累积成最终产品。
+    - **Task Board（任务看板）**：可视化展示每个任务的状态，通常包含列：Stories（用户故事）、To-do（待办）、In-progress（进行中）、To verify（待验证）、Done（完成）；团队成员可以随时更新任务状态；可以挂在墙上或数字化（如 Jira、Trello）。
 
 - **Daily Scrum purpose / 每日站会的目的**  
   - **EN**: A 15‑minute stand‑up meeting where each member briefly states what was done yesterday, what will be done today, and what blockers exist, to synchronize the team and surface problems early.  
   - **中**：每日站会是约 15 分钟的**站立式短会**，每个人回答“昨天做了什么、今天准备做什么、遇到什么阻碍”，让团队快速同步、尽早发现风险。
 
 - **User Stories, Story Points & Estimation / 用户故事与故事点估算**  
-  - **EN**: Requirements are captured as user stories (“As a \<role>, I want \<action>, so that \<goal>”), and effort is estimated in relative story points using scales like Fibonacci or T‑shirt sizes.  
-  - **中**：需求通常写成用户故事（“作为\<角色>，我想要\<行动>，以便\<目标>”），工作量用**相对的故事点**估算（如斐波那契数列或 T 恤尺码），反映复杂度和不确定性，而不是精确工时。
+  - **EN**: Requirements are captured as user stories ("As a \<role>, I want \<action>, so that \<goal>"), and effort is estimated in relative story points using scales like Fibonacci or T‑shirt sizes.  
+  - **中**：需求通常写成用户故事（"作为\<角色>，我想要\<行动>，以便\<目标>"），工作量用**相对的故事点**估算（如斐波那契数列或 T 恤尺码），反映复杂度和不确定性，而不是精确工时。  
+  - **详细说明（PDF）**：
+    - **用户故事格式**：`As a <role>, I want <action>, so that <goal>`。其中 `<role>` 从需求工程中识别（如 CityU Student），`<action>` 应该是**可执行的、具体的**（如 "download a testimonial by submitting a request in AIMS"），`<goal>` 应该是**可度量、可量化的**（如 "apply for student visa extension through HKSAR Immigration Department"）。用户故事通常还包含用例、图表草图、用户笔记、数据、现有系统报告等**补充信息**，以澄清上下文和范围。
+    - **故事点估算方法**：采用**相对估算**而非绝对估算（因为直接判断"A 有多长"很难，但判断"A 比 B 长"更容易）。常用标度有：**斐波那契数列**（1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144...）或 **T 恤尺码**（XXS, XS, S, M, L, XL, XXL）。团队先**选一个或多个用户故事作为锚点**，全体同意其故事点值（考虑不确定性和实现复杂度），然后其他故事与锚点比较，得出相对大小。例如：如果 B 被定为 3 点，团队认为 A 比 B 大但不太多，A 可定为 5 点。
+    - **用户故事拆分原则**：如果一个用户故事太大，**无法在一个 Sprint 内完成**，应该**拆分成多个更小的用户故事**，确保每个 Sprint 都能交付完整功能。
 
 - **Project Velocity / 项目速度**  
   - **EN**: Velocity is the number of story points completed in a cycle; using the min/avg/max velocity over past sprints, teams forecast how many cycles are needed to finish remaining points.  
-  - **中**：项目速度是每个迭代实际完成的故事点总数，可以用历史迭代的**最小/平均/最大速度**来估算“还剩多少故事点、大概还要多少个迭代”。
+  - **中**：项目速度是每个迭代实际完成的故事点总数，可以用历史迭代的**最小/平均/最大速度**来估算"还剩多少故事点、大概还要多少个迭代"。  
+  - **详细说明（PDF）**：
+    - **速度的计算**：一个用户故事只有在**通过 Sprint Review（由用户和 Product Owner 验收）**后才算"已完成"，其故事点才计入该 Sprint 的速度。例如：Sprint 1-5 的速度分别是 10, 12, 11, 15, 12，则最小速度 = 10，最大速度 = 15，平均速度 = 12。
+    - **速度的用途**：如果剩余故事点总数是 100，平均速度是 12，则预计还需要 `ceiling(100/12) = 9` 个 Sprint 才能完成。速度的**斜率**（连续多个 Sprint 的速度趋势）反映团队的生产力变化。
+    - **速度异常的处理**：如果速度持续下降或波动很大，项目经理需要在每个 Sprint 后采取行动，例如：**裁剪一些用户故事**，或要求团队每个 Sprint 交付更多故事点。
 
 - **Burndown charts / 燃尽图**  
   - **EN**: A burndown chart plots remaining story points against time in the sprint, showing whether progress matches the ideal burndown line and revealing scope creep or under‑estimation.  
-  - **中**：燃尽图把**剩余故事点随时间变化**画出来，对照理想直线可以看出进度是否落后、是否中途增加了需求或原来估算过低。
+  - **中**：燃尽图把**剩余故事点随时间变化**画出来，对照理想直线可以看出进度是否落后、是否中途增加了需求或原来估算过低。  
+  - **详细说明（PDF）**：
+    - **Sprint Burndown Chart（Sprint 燃尽图）**：横轴是 Sprint 内的天数，纵轴是剩余故事点；理想情况下应该是一条从左上到右下的直线；如果实际曲线**高于理想线**，说明进度落后；如果曲线**上升**，说明中途增加了新需求或原估算过低。
+    - **Release Burndown Chart（发布燃ndown图）**：横轴是 Sprint 编号，纵轴是项目剩余故事点总数；**每个 Sprint 结束后更新一次**；团队可以选择任何单位来度量进度（故事点、小时数等）。例如：初始 160 点，Sprint 1 后剩 150，Sprint 2 后剩 138...如果曲线**不下降**或**上升**，说明项目无法按计划推进，或中途增加了新用户故事，或原估算被低估。
 
 ### 2. Requirements Engineering / 需求工程
+
+- **通俗理解**：这部分可以理解成“在写代码前，把客户到底想要什么问清楚、写清楚、讲清楚、排好优先级”的一整套方法。
 
 - **RE Definition & Outcome / RE 定义与产物**  
   - **EN**: Requirements Engineering (RE) is the process of finding and structuring functional and non‑functional requirements; its main outcome is a requirements specification that is both a contract with the customer and a starting point for design.  
@@ -43,6 +77,7 @@
 - **Elicitation Activities & Techniques / 获取活动与技术概览**  
   - **EN**: Elicitation involves understanding the domain, identifying requirement sources, analyzing stakeholders, selecting techniques, and then actually eliciting via interviews, brainstorming, task/scenario analysis, ethnography, form analysis, focus groups, workshops, questionnaires, domain analysis, BPR, prototyping, mind‑mapping, group storytelling, user stories, etc.  
   - **中**：获取需求要先**理解业务域、识别需求来源、分析干系人、选择技术**，然后用多种方法实际收集：如访谈、头脑风暴、任务/场景分析、田野调查、表单分析、焦点小组、工作坊、问卷、从现有系统综合、领域分析、业务流程重组、原型、思维导图、群体讲故事、用户故事等。
+  - **补充（PDF）**：课件中特别展开了 **访谈的三种形式（非结构化、结构化、半结构化）**、任务分析的“自顶向下分解任务—子任务—动作序列”、场景分析通过“先观察真实场景再补问未覆盖情况”、以及表单分析要区分“信息产生时间点”和“哪些字段恒定、哪些有变化”，这些都可以直接写进需求文档或用例里。
 
 - **Common RE Mistakes / 需求规格常见错误**  
   - **EN**: Typical problems include noise (irrelevant info), silence (missing features), over‑specification (describing solutions instead of problems), contradictions, ambiguity, forward references, and wishful thinking.  
@@ -63,12 +98,15 @@
 - **Validation & Negotiation (MoSCoW) / 验证与优先级协商**  
   - **EN**: Validation uses multiple sources and aids (walkthroughs, prototypes, test plans, user acceptance tests); negotiation often prioritizes with schemes like MoSCoW (Must, Should, Could, Won’t).  
   - **中**：验证可以结合**多源交叉验证、早期走查、原型、单元测试/验收测试**等；协商优先级时常用 **MoSCoW** 法——“必须有、应该有、可以有、这次不要”，指导在时间/预算约束下先做哪些需求。
+  - **补充（PDF）**：讲义中把验证要看的点列成清单：**正确性、完整性、一致性、准确性、可读性、可测试性**，并强调“直接链路”比“间接链路”（例如只通过中间经理转述用户意见）更可靠，优先考虑多源直接证据。
 
 ---
 
 ## Topic 2: Architecture & Technical Debt（架构与技术债）
 
 ### 1. Software Architecture / 软件架构
+
+- **通俗理解**：这里是在说“系统大框架怎么搭”，比如是一整坨还是拆成很多服务、怎么保证高可用、高性能、好扩展。
 
 - **Role of Architecture / 架构在生命周期中的作用**  
   - **EN**: Architecture is conceptual and focuses on fundamental design decisions about elements and their relations; it is the earliest set of design decisions, a vehicle for stakeholder communication, and a key enabler or inhibitor of quality attributes.  
@@ -101,8 +139,11 @@
 - **Integration Patterns (Messaging) / 企业集成模式**  
   - **EN**: Enterprise Integration Patterns like Content‑Based Router, Splitter, Aggregator, and Scatter‑Gather specify how messages flow between components to achieve scalability, flexibility and reliability.  
   - **中**：在系统集成中，可用**内容路由器、拆分器、聚合器、广播‑聚合对**等企业集成模式来组织消息流动，从而在组件连线层面提升系统的可扩展性与可靠性。
+  - **补充（PDF）**：课件中的订单处理示例展示了：**Content‑Based Router** 根据消息内容把订单路由到不同库存服务，**Splitter+Router** 将包含多个订单项的消息拆分后分别路由，**Aggregator** 再把各子结果合并成一个整体响应，最后 **Scatter‑Gather** 支持“一条请求广播给多家供应商，再聚合报价选最优”。
 
 ### 2. Technical Debt / 技术债
+
+- **通俗理解**：技术债可以想成“现在图省事、以后还账加倍辛苦”的各种技术性妥协，以及团队怎么有计划地记录、评估和慢慢还这些债。
 
 - **Definition: "Quick & dirty" vs. Strategic / 定义：“又快又脏”与战略性取舍**  
   - **EN**: Technical debt is the cost of extra rework caused by choosing an expedient “quick & dirty” solution now instead of a cleaner one, or by a deliberate decision to postpone ideal design for business reasons.  
@@ -138,6 +179,8 @@
 
 ### 1. Fundamental Principles / 基本原则
 
+- **通俗理解**：这一块讲的是“写代码的底层哲学”，比如函数和数据怎么抽象、哪些细节要藏起来、如何保证别人用你的代码不会轻易把内部搞坏。
+
 - **Abstraction / 抽象**  
   - **EN**: Encapsulate a well‑defined functional purpose into functions or classes so clients rely on the abstraction (interface) instead of internal implementation; abstraction can be functional (e.g., `int[] sort(int[] xs)`) or via generalization across similar pieces of code.  
   - **中**：把一段有明确功能目的的代码封装成函数或类（比如 `sort` 函数），调用方只依赖接口而不关心内部算法；抽象既包括**功能抽象**，也包括在多段类似代码之间**找共性、隐藏差异**的“泛化抽象”。
@@ -153,8 +196,11 @@
 - **Encapsulation & Violations / 封装与破坏封装**  
   - **EN**: Encapsulation protects internal state so that only designated operations can mutate it; violations occur when client code can directly manipulate internal structures (e.g., exposing `int[] a` of `Stack` or passing out mutable references).  
   - **中**：封装要求**内部状态只能通过少数方法修改**，而且这些方法会维护好不变式；当类把内部数组设为 `public`，或者把内部数组直接返回给调用方时，外部代码能绕过接口随意改，就形成了**封装破坏**。
+  - **补充（PDF）**：讲义里用 `Stack` 与 `myArray` 的例子说明：如果 `Stack` 内部直接持有外部传进来的 `myArray` 引用，并且客户代码还能对这个数组做 `get/set` 操作，就会出现“`Stack.push()` 之后，外面一改数组，`Stack` 自己却以为结构完好”的情况，这是典型的封装破坏。
 
 ### 2. SOLID Principles / SOLID 设计原则
+
+- **通俗理解**：SOLID 可以看成是“面向对象写得不难维护”的五条经验法则，照着做一般能少踩很多设计坑。
 
 - **SRP – Single Responsibility Principle / 单一职责原则**  
   - **EN**: A class should have one logical reason to change, tied to a single responsibility (e.g., `Stack` only responsible for “behaving like a stack”).  
@@ -178,6 +224,8 @@
 
 ### 3. Coupling & Cohesion / 耦合与内聚
 
+- **通俗理解**：这一块就是在教你“哪些东西应该绑在一起、哪些应该松开”，目标是改一处不会牵出一大片，又能让代码块各自职责清晰。
+
 - **Coupling Types & Goal / 耦合类型与目标**  
   - **EN**: Coupling is compile‑time structural dependency; we aim for lower coupling by avoiding content and common coupling (direct code use/global variables) and preferring data coupling over stamp/control coupling.  
   - **中**：耦合是编译期的结构依赖，目标是**尽量降低耦合**：避免内容耦合和公共耦合（直接用别人的代码片段或全局变量），比起传整个大结构（标记耦合）或用控制参数驱动流程（控制耦合），更倾向于传入刚好需要的数据（数据耦合）。
@@ -196,6 +244,8 @@
 
 ### 4. Code Smells & Refactoring / 代码坏味道与重构
 
+- **通俗理解**：这里讲的是“怎么看出代码写得有问题（有味道）”以及“用重构一点点把味道减轻”，而不是一上来就重写全部。
+
 - **Definition & Examples / 定义与示例**  
   - **EN**: A code smell is a symptom of violating design principles that may lead to more changes, more bugs, and worse comprehension; examples include magic numbers, hardcoding, long methods, poor naming, duplicated code, Blob, and Spaghetti Code.  
   - **中**：代码坏味道是违反设计原则的征兆，会让类更易变、更易出错且难以理解，典型例子有魔法数字、硬编码、超长函数、命名混乱、重复代码、大泥团（Blob）、意大利面代码等。
@@ -210,6 +260,8 @@
 
 ### 1. Modern Code Review (MCR) / 现代代码审查
 
+- **通俗理解**：这部分可以理解成“大家在 Git 上互相看改动、提意见的套路”和大厂总结出的好习惯、坏现象。
+
 - **Definition & Characteristics / 定义与特征**  
   - **EN**: Modern code review is a lightweight, tool‑based review of code changes (patches) by peers, usually asynchronous and less formal than inspections.  
   - **中**：现代代码审查是针对代码改动（补丁）的同伴评审，依托 GitHub、Gerrit 等工具进行，流程轻量、非正式，通常异步完成。
@@ -221,12 +273,15 @@
 - **Best Practices / 最佳实践**  
   - **EN**: Small change sizes, 1–5 reviewers, reviews done early and frequently, reviewers familiar with context, using static analyzers alongside human review, rotating reviewers instead of overloading experts.  
   - **中**：最佳实践包括：每次改动要小、评审要早且频繁、通常 1–5 个评审人、找熟悉上下文的人审、结合静态分析工具使用，并轮换评审人避免压垮“核心大佬”。
+  - **补充（PDF）**：Google 的案例表明，**大多数变更只改一两个文件、几十行以内**，每周大约 4 小时做评审；作者通常在 1–5 小时内就能收到回应，且会使用风格检查器等自动工具在提交前/提交时过滤掉简单问题，把时间留给“设计和可维护性”的讨论。
 
 - **Issues / 常见问题**  
   - **EN**: Review quality drops on complex code; distance (geographical/organizational) and negative tone harm effectiveness; missing context causes misunderstandings.  
   - **中**：复杂代码往往反馈少、质量低；地理或组织距离、评论语气不好以及上下文缺失都会让审查效果变差。
 
 ### 2. Automated Testing: Fuzzing & Delta Debugging / 自动化测试：模糊测试与差分调试
+
+- **通俗理解**：模糊测试负责“疯狂乱试，把程序撞崩溃”，差分调试负责“把那个导致崩溃的复杂输入一点点瘦身，直到留下最小的复现案例”。
 
 - **Fuzzing / 模糊测试**  
   - **EN**: Fuzzing automatically generates many mutated or random inputs to exercise programs and find crashes or vulnerabilities; examples include Android Monkey (UI event fuzzing) and American Fuzzy Lop (AFL, grey‑box mutation‑based fuzzer with coverage feedback).  
@@ -238,9 +293,12 @@
 
 ### 3. Testing Techniques & Test Oracles / 测试技术与测试预言机
 
+- **通俗理解**：这一块是讲“怎么系统地设计测试 + 怎么判断结果是不是对的”，包括不同类型的预言机、黑箱/白箱方法以及在需求不清楚时怎么尽量测到点子上。
+
 - **Testing Process & CI/CD / 测试过程与持续集成**  
   - **EN**: The testing procedure includes defining objectives, designing tests, executing them, and analyzing results; modern CI/CD runs automated builds and tests on each commit and can deploy small, frequent releases.  
   - **中**：测试过程包括确定目标、设计用例、执行测试、分析结果；CI/CD 会在每次提交后自动构建和运行测试，并支持小步快跑、频繁发布。
+  - **补充（PDF）**：讲义中把测试过程细化为 4 步：**定义测试目标 → 设计测试（包括写脚本或配置 Fuzzer Profile）→ 执行测试（本地或 CI）→ 分析结果（包括断言、崩溃日志等）**，并强调如果要自动化前两步或执行，就必须同时自动化“结果分析”，否则人力瓶颈会转移到日志检查上。
 
 - **Test Oracles / 测试预言机类型**  
   - **EN**:  
