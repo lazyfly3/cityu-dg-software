@@ -4,6 +4,10 @@
 # PDF text files
 *.pdf.txt
 
+# Ignore images (WeChat screenshots, etc.)
+*.jpg
+*.jpeg
+
 # OS files
 .DS_Store
 Thumbs.db
