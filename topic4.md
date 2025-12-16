@@ -89,7 +89,8 @@
 
 - **NFRs: Quality Attributes vs. Constraints / 非功能需求：质量属性 vs 约束**  
   - **EN**: Non‑functional requirements include quality attributes (performance, security, usability, availability, etc.) and constraints (laws, standards, platform limits); many domains have their own typical attribute sets.  
-  - **中**：非功能需求既包括**质量属性**（性能、安全性、可用性、可维护性、可测试性等），也包括**约束条件**（法规、行业标准、平台/硬件限制），不同领域会有各自典型的一组质量关注点。
+  - **中**：非功能需求既包括**质量属性**（性能、安全性、可用性、可维护性、可测试性等），也包括**约束条件**（法规、行业标准、平台/硬件限制），不同领域会有各自典型的一组质量关注点。  
+  - **约束条件示例**：**可用性要求（Availability）**、**时间/预算（Time/Budget）**等。
 
 - **Measurable & Testable NFRs / 可度量与可测试**  
   - **EN**: Vague qualities (“quickly”) should be refined into measurable forms (“20 selected cryptocurrencies within 1 second”), otherwise they cannot be designed for or validated.  
@@ -131,6 +132,10 @@
 - **Tactics for High Availability & Other Qualities / 提高可用性等的策略**  
   - **EN**: Architectural tactics include separating UI from core logic (MVC/three‑tier), using active redundancy, replication, load‑balancing, authentication/authorization for security, and designing testable modules for correctness.  
   - **中**：常见策略有：用 **MVC/三层架构**把 UI 与核心逻辑分离、通过**主动冗余/多副本/负载均衡**提升可用性，用认证/授权等手段提升安全，设计**易测试的模块**来保证正确性。
+
+- **Design Patterns: Redundancy / 设计模式：冗余**  
+  - **EN**: Redundancy is a design pattern that improves system availability and fault tolerance by maintaining duplicate components or resources. Active redundancy keeps multiple components running simultaneously (all processing requests), while passive redundancy keeps backup components in standby mode (activated only when primary fails). Redundancy helps systems continue operating even when individual components fail.  
+  - **中**：冗余是一种设计模式，通过维护重复的组件或资源来提升系统可用性和容错能力。**主动冗余（Active Redundancy）**让多个组件同时运行（都处理请求），而**被动冗余（Passive Redundancy）**让备用组件处于待机状态（仅在主组件故障时激活）。冗余使系统在单个组件故障时仍能继续运行。
 
 - **Attribute‑Driven Design (ADD) & Tactics / 属性驱动设计**  
   - **EN**: ADD iteratively decomposes modules by choosing architectural drivers, selecting patterns/tactics/styles that satisfy them, and assigning responsibilities; examples include addressing usability via separated UI, security via authentication in presentation tier, and availability via redundancy in data tier.  
@@ -183,19 +188,48 @@
 
 - **Abstraction / 抽象**  
   - **EN**: Encapsulate a well‑defined functional purpose into functions or classes so clients rely on the abstraction (interface) instead of internal implementation; abstraction can be functional (e.g., `int[] sort(int[] xs)`) or via generalization across similar pieces of code.  
-  - **中**：把一段有明确功能目的的代码封装成函数或类（比如 `sort` 函数），调用方只依赖接口而不关心内部算法；抽象既包括**功能抽象**，也包括在多段类似代码之间**找共性、隐藏差异**的“泛化抽象”。
+  - **中**：把一段有明确功能目的的代码封装成函数或类（比如 `sort` 函数），调用方只依赖接口而不关心内部算法；抽象既包括**功能抽象**，也包括在多段类似代码之间**找共性、隐藏差异**的“泛化抽象”。  
+  - **通俗理解**：抽象就像用遥控器开电视——你按按钮就行，不需要知道电视内部是怎么接收信号、怎么解码的。写代码时，把复杂操作包装成一个简单的函数名（比如 `calculateTotal()`），调用的人不需要知道里面是加法还是乘法，只要知道“调用这个函数能算出总数”就够了。  
+  - **详细说明**：
+    - **功能抽象**：将一组操作封装成一个有意义的函数，隐藏实现细节。例如 `sort()` 函数隐藏了排序算法（冒泡、快排等）的具体实现。
+    - **泛化抽象**：在多个相似的代码片段中找出共同模式，提取成通用接口或基类。例如多个支付方式（信用卡、支付宝、微信）都有“支付”这个共同行为，可以抽象成 `PaymentMethod` 接口。
+    - **好处**：降低复杂度、提高复用性、便于维护（改实现不影响调用方）。
 
 - **Data Abstraction / 数据抽象**  
   - **EN**: Data abstraction models a data structure by a set of related operations (interfaces) while hiding its representation; good examples (stack with `push/pop/isEmpty/length`) preserve invariants, whereas bad ones expose the representation and break semantics.  
-  - **中**：数据抽象用一组相关操作来刻画某种数据结构，同时**隐藏其内部实现**；好的栈接口只有 `push/pop/isEmpty/length` 等操作并保持“后进先出”不变式，坏例子则把数组下标、内部结构都暴露出来，破坏了“像栈一样用”的语义。
+  - **中**：数据抽象用一组相关操作来刻画某种数据结构，同时**隐藏其内部实现**；好的栈接口只有 `push/pop/isEmpty/length` 等操作并保持“后进先出”不变式，坏例子则把数组下标、内部结构都暴露出来，破坏了“像栈一样用”的语义。  
+  - **通俗理解**：数据抽象就像银行账户——你只能通过“存钱、取钱、查余额”这些操作来使用，银行不会让你直接打开金库去数钞票。写代码时，栈（Stack）应该只提供 `push()`、`pop()` 这些操作，不应该让外部直接访问内部数组的下标，否则外面可能乱改，破坏“后进先出”的规则。  
+  - **详细说明**：
+    - **核心思想**：用操作（接口）定义数据结构的行为，而不是暴露内部存储方式（数组、链表等）。
+    - **不变式（Invariant）**：数据抽象必须维护数据结构的语义不变式。例如栈必须保证“后进先出”，队列必须保证“先进先出”。
+    - **好的例子**：`Stack` 类只提供 `push()`, `pop()`, `isEmpty()`, `size()` 等方法，内部用数组还是链表实现，调用方不知道也不关心。
+    - **坏的例子**：把 `Stack` 的内部数组 `int[] elements` 设为 `public`，或者提供 `getElement(int index)` 方法，让外部可以直接访问任意位置，破坏了栈的语义。
 
 - **Information Hiding / 信息隐藏**  
   - **EN**: Interfaces should expose only essential information; parameter lists and types should not leak unnecessary internal details (e.g., `canVote(Voter v)` vs `canVote(HKID, age, districtCode)`).  
-  - **中**：接口只暴露**完成功能所必需的信息**，形参与返回值尽量不泄露内部结构，例如用 `Voter` 对象承载身份证号/年龄/选区，而不是把三个字段全部摊在接口上。
+  - **中**：接口只暴露**完成功能所必需的信息**，形参与返回值尽量不泄露内部结构，例如用 `Voter` 对象承载身份证号/年龄/选区，而不是把三个字段全部摊在接口上。  
+  - **通俗理解**：信息隐藏就像去医院看病——医生只需要知道你的症状和基本信息，不需要知道你的银行密码、社交账号这些无关信息。写代码时，判断一个人能否投票的函数应该接收一个 `Voter` 对象，而不是把身份证号、年龄、选区这三个字段都列在参数里，因为这样会暴露内部数据结构，而且如果以后要加新字段（比如居住年限），所有调用这个函数的地方都要改。  
+  - **详细说明**：
+    - **原则**：接口参数和返回值应该使用抽象类型（对象、接口），而不是暴露具体的内部字段。
+    - **好处**：降低耦合（内部结构改变不影响调用方）、提高封装性、便于扩展。
+    - **例子对比**：
+      - **泄露信息**：`canVote(String hkid, int age, String districtCode)` —— 暴露了内部用三个字段存储选民信息。
+      - **隐藏信息**：`canVote(Voter voter)` —— 只暴露“需要选民对象”这个抽象概念，内部字段可以随时调整。
 
 - **Encapsulation & Violations / 封装与破坏封装**  
   - **EN**: Encapsulation protects internal state so that only designated operations can mutate it; violations occur when client code can directly manipulate internal structures (e.g., exposing `int[] a` of `Stack` or passing out mutable references).  
-  - **中**：封装要求**内部状态只能通过少数方法修改**，而且这些方法会维护好不变式；当类把内部数组设为 `public`，或者把内部数组直接返回给调用方时，外部代码能绕过接口随意改，就形成了**封装破坏**。
+  - **中**：封装要求**内部状态只能通过少数方法修改**，而且这些方法会维护好不变式；当类把内部数组设为 `public`，或者把内部数组直接返回给调用方时，外部代码能绕过接口随意改，就形成了**封装破坏**。  
+  - **通俗理解**：封装就像给房子装门锁——只有通过门（公开方法）才能进出，不能直接从窗户（内部字段）爬进去。如果 `Stack` 类把内部数组设为 `public`，就像把窗户拆了，外面可以随便改，`Stack` 自己都不知道数据被改了，可能还以为栈是空的，结果 `pop()` 时出错。  
+  - **详细说明**：
+    - **封装的核心**：内部状态（字段）应该是 `private`，只能通过公开的方法（如 `push()`, `pop()`）来修改，这些方法会维护数据的不变式。
+    - **封装破坏的常见情况**：
+      1. **暴露内部字段**：`public int[] elements;` —— 外部可以直接修改数组。
+      2. **返回可变引用**：`public int[] getElements() { return elements; }` —— 返回内部数组的引用，外部修改会影响内部。
+      3. **持有外部可变引用**：构造函数直接保存外部传入的数组引用，外部修改会影响对象内部状态。
+    - **正确的做法**：
+      - 字段设为 `private`。
+      - 如果需要返回数据，返回副本（`return Arrays.copyOf(elements, size);`）。
+      - 如果需要接收数据，复制一份保存（`this.elements = Arrays.copyOf(inputArray, inputArray.length);`）。
   - **补充（PDF）**：讲义里用 `Stack` 与 `myArray` 的例子说明：如果 `Stack` 内部直接持有外部传进来的 `myArray` 引用，并且客户代码还能对这个数组做 `get/set` 操作，就会出现“`Stack.push()` 之后，外面一改数组，`Stack` 自己却以为结构完好”的情况，这是典型的封装破坏。
 
 ### 2. SOLID Principles / SOLID 设计原则
@@ -204,23 +238,149 @@
 
 - **SRP – Single Responsibility Principle / 单一职责原则**  
   - **EN**: A class should have one logical reason to change, tied to a single responsibility (e.g., `Stack` only responsible for “behaving like a stack”).  
-  - **中**：一个类应只因一种逻辑职责而改变，例如 `Stack` 只负责“栈行为”，与 UI、日志等职责分离。
+  - **中**：一个类应只因一种逻辑职责而改变，例如 `Stack` 只负责“栈行为”，与 UI、日志等职责分离。  
+  - **通俗理解**：单一职责就像“一个萝卜一个坑”——每个类只做一件事，做好就行。如果一个类既管用户登录，又管发送邮件，还管写日志，那当邮件服务出问题时，你改邮件代码可能会把登录功能也搞坏。就像餐厅里，厨师负责做菜，服务员负责上菜，收银员负责收钱，各司其职，不能一个人全包。  
+  - **详细说明**：
+    - **核心思想**：一个类应该只有一个引起它变化的原因。如果类有多个职责，修改一个职责可能影响其他职责。
+    - **判断标准**：问自己“这个类会因为什么原因而需要修改？”如果答案不止一个，说明违反了 SRP。
+    - **例子**：
+      - **违反 SRP**：`User` 类既负责用户数据管理，又负责发送邮件通知，还负责写日志。如果邮件服务改变，`User` 类要改；如果日志格式改变，`User` 类也要改。
+      - **遵循 SRP**：`User` 类只负责用户数据，`EmailService` 负责发邮件，`Logger` 负责写日志。各自独立，互不影响。
+    - **好处**：降低复杂度、提高可维护性、便于测试、减少修改影响范围。
 
 - **OCP – Open/Closed Principle / 开闭原则**  
   - **EN**: Classes should be open for extension but closed for modification—new behavior is added by extending abstractions, not editing existing core code.  
-  - **中**：代码应当通过扩展而不是修改来加新功能，比如用多态的 `SalaryType.doThis()` 替代不断扩大的 `switch` 语句。
+  - **中**：代码应当通过扩展而不是修改来加新功能，比如用多态的 `SalaryType.doThis()` 替代不断扩大的 `switch` 语句。  
+  - **通俗理解**：开闭原则就像乐高积木——现有的积木块（核心代码）不能改，但你可以用新积木块（新类）扩展出新的组合。如果每次要新功能都去改旧代码，就像每次都要把已经搭好的房子拆了重建，风险很大。正确的做法是：定义好接口（比如“工资计算接口”），以后要加新的工资类型（小时工、月薪、提成），就写新类实现这个接口，不需要改原来的代码。  
+  - **详细说明**：
+    - **核心思想**：对扩展开放，对修改关闭。新功能通过添加新代码（继承、实现接口）来实现，而不是修改已有代码。
+    - **违反 OCP 的例子**：
+      ```java
+      // 每次加新工资类型都要改这个函数
+      double calculateSalary(Employee e) {
+          switch(e.type) {
+              case "HOURLY": return e.hours * e.rate;
+              case "SALARY": return e.monthlySalary;
+              case "COMMISSION": return e.base + e.sales * 0.1;
+              // 加新类型要在这里加 case
+          }
+      }
+      ```
+    - **遵循 OCP 的例子**：
+      ```java
+      // 定义接口
+      interface SalaryCalculator {
+          double calculate(Employee e);
+      }
+      // 新类型只需实现接口，不需要改现有代码
+      class HourlyCalculator implements SalaryCalculator { ... }
+      class SalaryCalculator implements SalaryCalculator { ... }
+      ```
+    - **好处**：降低修改风险、提高稳定性、便于扩展、符合“开闭原则”的设计更灵活。
 
 - **LSP – Liskov Substitution Principle / 里氏替换原则**  
   - **EN**: Subclasses must preserve the behavior expected from the base type, so any client using the base can safely use the subtype.  
-  - **中**：子类必须保持父类的语义契约，在任何需要父类的地方都能安全换成子类，不能靠“假实现（dummy）方法”硬凑。
+  - **中**：子类必须保持父类的语义契约，在任何需要父类的地方都能安全换成子类，不能靠“假实现（dummy）方法”硬凑。  
+  - **通俗理解**：里氏替换原则就像“以假乱真”——如果你说“这是鸟”，那它必须真的能飞、能叫，不能是“企鹅”（不会飞）或者“玩具鸟”（不会叫）。写代码时，如果 `Rectangle` 是父类，`Square` 是子类，那任何用 `Rectangle` 的地方换成 `Square` 应该还能正常工作。如果 `Square` 重写了 `setWidth()` 方法，让宽度改变时高度也自动改变（保持正方形），那调用方可能就懵了——我明明只改了宽度，怎么高度也变了？这就违反了 LSP。  
+  - **详细说明**：
+    - **核心思想**：子类对象必须能够替换其父类对象，且替换后程序行为不变。子类可以扩展功能，但不能改变父类的预期行为。
+    - **违反 LSP 的经典例子**：
+      ```java
+      class Rectangle {
+          int width, height;
+          void setWidth(int w) { width = w; }
+          void setHeight(int h) { height = h; }
+      }
+      class Square extends Rectangle {
+          void setWidth(int w) { 
+              width = w; 
+              height = w; // 违反：改变了父类的行为预期
+          }
+      }
+      // 使用方期望：setWidth 只改宽度，但 Square 把高度也改了
+      ```
+    - **遵循 LSP 的做法**：
+      - 子类不应该重写父类方法并改变其语义。
+      - 子类的前置条件不能比父类更严格，后置条件不能比父类更弱。
+      - 子类不应该抛出父类不抛出的异常。
+    - **好处**：保证多态的正确性、提高代码可靠性、便于理解和维护。
 
 - **ISP – Interface Segregation Principle / 接口隔离原则**  
   - **EN**: Clients should not be forced to depend on methods they do not use; large interfaces should be split into smaller, cohesive ones.  
-  - **中**：接口要精瘦、专一，不要让实现类为了一个有用方法被迫实现一堆无用的空方法，应拆成多个小接口。
+  - **中**：接口要精瘦、专一，不要让实现类为了一个有用方法被迫实现一堆无用的空方法，应拆成多个小接口。  
+  - **通俗理解**：接口隔离就像“按需点餐”——如果你只想吃米饭，餐厅不应该强迫你点“套餐A”（包含米饭、汤、沙拉、甜点）。写代码时，如果一个接口有10个方法，但某个类只需要其中2个，那这个类就被迫实现了另外8个空方法（或者抛出异常），这是浪费且容易出错。正确的做法是把大接口拆成多个小接口，需要什么就实现什么。  
+  - **详细说明**：
+    - **核心思想**：客户端不应该被迫依赖它不使用的方法。接口应该尽可能小，只包含客户端真正需要的方法。
+    - **违反 ISP 的例子**：
+      ```java
+      // 大而全的接口
+      interface Worker {
+          void work();
+          void eat();
+          void sleep();
+          void code();
+          void design();
+          void test();
+      }
+      // 程序员只需要 work, code, test，但被迫实现 eat, sleep, design
+      class Programmer implements Worker {
+          void eat() { throw new UnsupportedOperationException(); }
+          void sleep() { throw new UnsupportedOperationException(); }
+          void design() { throw new UnsupportedOperationException(); }
+      }
+      ```
+    - **遵循 ISP 的做法**：
+      ```java
+      // 拆分成小接口
+      interface Workable { void work(); }
+      interface Codable { void code(); }
+      interface Testable { void test(); }
+      interface Eatable { void eat(); }
+      // 按需实现
+      class Programmer implements Workable, Codable, Testable { ... }
+      ```
+    - **好处**：减少不必要的依赖、提高代码清晰度、降低实现复杂度、避免“空实现”或异常。
 
 - **DIP – Dependency Inversion Principle / 依赖倒置原则**  
   - **EN**: High‑level modules and low‑level modules both depend on abstractions; details depend on abstractions, often realized via dependency injection and factories.  
-  - **中**：高层与底层都应该依赖抽象接口而不是具体类，通过依赖注入、工厂等方式，把实现细节“插入”到高层逻辑中。
+  - **中**：高层与底层都应该依赖抽象接口而不是具体类，通过依赖注入、工厂等方式，把实现细节“插入”到高层逻辑中。  
+  - **通俗理解**：依赖倒置就像“用标准插座”——你的手机充电器（高层）依赖的是“USB接口”（抽象），而不是“某个特定品牌的USB线”（具体实现）。这样你可以随时换不同的USB线，只要符合USB标准就行。写代码时，业务逻辑（高层）应该依赖“数据访问接口”（抽象），而不是直接依赖“MySQL数据库类”（具体实现）。这样以后要换成MongoDB，只需要换实现类，业务逻辑不用改。  
+  - **详细说明**：
+    - **核心思想**：
+      1. 高层模块不应该依赖低层模块，两者都应该依赖抽象。
+      2. 抽象不应该依赖细节，细节应该依赖抽象。
+    - **违反 DIP 的例子**：
+      ```java
+      // 高层直接依赖具体实现
+      class OrderService {
+          private MySQLDatabase db; // 直接依赖具体类
+          void saveOrder(Order o) {
+              db.insert(o); // 如果换成 MongoDB，这里要改
+          }
+      }
+      ```
+    - **遵循 DIP 的做法**：
+      ```java
+      // 定义抽象接口
+      interface Database {
+          void insert(Object obj);
+      }
+      // 高层依赖抽象
+      class OrderService {
+          private Database db; // 依赖抽象
+          OrderService(Database db) { this.db = db; } // 依赖注入
+          void saveOrder(Order o) {
+              db.insert(o); // 换实现类不影响这里
+          }
+      }
+      // 具体实现
+      class MySQLDatabase implements Database { ... }
+      class MongoDB implements Database { ... }
+      ```
+    - **实现方式**：
+      - **依赖注入（Dependency Injection）**：通过构造函数、Setter 或框架注入依赖。
+      - **工厂模式（Factory Pattern）**：用工厂创建具体实现，返回抽象类型。
+    - **好处**：提高灵活性、便于测试（可以注入 Mock 对象）、降低耦合、符合“面向接口编程”。
 
 ### 3. Coupling & Cohesion / 耦合与内聚
 
@@ -228,7 +388,18 @@
 
 - **Coupling Types & Goal / 耦合类型与目标**  
   - **EN**: Coupling is compile‑time structural dependency; we aim for lower coupling by avoiding content and common coupling (direct code use/global variables) and preferring data coupling over stamp/control coupling.  
-  - **中**：耦合是编译期的结构依赖，目标是**尽量降低耦合**：避免内容耦合和公共耦合（直接用别人的代码片段或全局变量），比起传整个大结构（标记耦合）或用控制参数驱动流程（控制耦合），更倾向于传入刚好需要的数据（数据耦合）。
+  - **中**：耦合是编译期的结构依赖，目标是**尽量降低耦合**：避免内容耦合和公共耦合（直接用别人的代码片段或全局变量），比起传整个大结构（标记耦合）或用控制参数驱动流程（控制耦合），更倾向于传入刚好需要的数据（数据耦合）。  
+  - **通俗理解**：耦合就像“两个人绑在一起”——绑得越紧，一个人动，另一个人也被迫跟着动。写代码时，如果类A直接用了类B的内部实现，那B一改，A就得跟着改，这就是高耦合。低耦合就像两个人只是“握手”（通过接口交互），各自内部怎么变都不影响对方。  
+  - **详细说明**：
+    - **耦合类型（从高到低）**：
+      1. **内容耦合（Content Coupling）**：一个模块直接访问另一个模块的内部数据或代码。例如：A 类直接修改 B 类的私有字段。
+      2. **公共耦合（Common Coupling）**：多个模块共享同一个全局变量或数据。例如：多个类都读写同一个全局变量 `globalCounter`。
+      3. **外部耦合（External Coupling）**：多个模块依赖同一个外部接口或文件格式。例如：多个类都直接读写同一个文件。
+      4. **控制耦合（Control Coupling）**：一个模块通过控制参数（如布尔值、枚举）控制另一个模块的行为。例如：`process(data, isUrgent)`，用 `isUrgent` 控制处理方式。
+      5. **标记耦合（Stamp Coupling）**：模块之间传递整个数据结构，但只使用其中一部分。例如：传整个 `User` 对象，但只用 `userId`。
+      6. **数据耦合（Data Coupling）**：模块之间只通过参数传递必要的数据。例如：只传 `userId`（int 类型）。
+    - **目标**：尽量使用数据耦合，避免内容耦合和公共耦合。
+    - **好处**：降低修改影响范围、提高可维护性、便于独立测试和部署。
 
 - **External Coupling Example / 外部耦合示例**  
   - **EN**: When many components read/write the same file or external resource directly, changes to that resource affect all of them; introducing a dedicated component or adapter for that resource reduces coupling.  
@@ -236,7 +407,19 @@
 
 - **Cohesion Types & Goal / 内聚类型与目标**  
   - **EN**: Cohesion is about why things are grouped together; we want higher cohesion—ideally functional cohesion (all parts contribute to a single, well‑defined task)—instead of coincidental or purely logical/temporal grouping.  
-  - **中**：内聚关心“**为什么把这些东西放在一起**”，目标是尽量靠近**功能内聚**（一起完成一个明确任务），减少“碰巧写在一起”的偶然内聚，避免一个类/模块什么都做、什么都沾。
+  - **中**：内聚关心“**为什么把这些东西放在一起**”，目标是尽量靠近**功能内聚**（一起完成一个明确任务），减少“碰巧写在一起”的偶然内聚，避免一个类/模块什么都做、什么都沾。  
+  - **通俗理解**：内聚就像“物以类聚”——一个工具箱里的工具都是用来修东西的（功能内聚），而不是把锤子、菜刀、牙刷、手机放在一起（偶然内聚）。写代码时，一个类里的方法应该都是为了完成同一个目标，比如 `Stack` 类里的 `push()`, `pop()`, `isEmpty()` 都是为了“实现栈的功能”。如果一个类既有“计算工资”、又有“发送邮件”、还有“写日志”，那就是低内聚，应该拆开。  
+  - **详细说明**：
+    - **内聚类型（从低到高）**：
+      1. **偶然内聚（Coincidental Cohesion）**：元素之间没有逻辑关系，只是碰巧放在一起。例如：一个工具类里既有 `calculateTax()`，又有 `sendEmail()`，还有 `formatDate()`。
+      2. **逻辑内聚（Logical Cohesion）**：元素在逻辑上相关，但功能不同。例如：一个 `InputHandler` 类处理所有类型的输入（键盘、鼠标、触摸），但处理方式完全不同。
+      3. **时间内聚（Temporal Cohesion）**：元素在同一时间执行，但功能不相关。例如：`initialize()` 方法里初始化数据库、加载配置、启动定时任务，它们都在启动时执行，但功能无关。
+      4. **过程内聚（Procedural Cohesion）**：元素按执行顺序组织，但功能不紧密相关。例如：一个函数先验证输入，再处理数据，最后写日志，虽然按顺序执行，但每个步骤功能独立。
+      5. **通信内聚（Communicational Cohesion）**：元素操作相同的数据，但功能不同。例如：一个类里所有方法都操作 `User` 对象，但有的是验证、有的是格式化、有的是转换。
+      6. **顺序内聚（Sequential Cohesion）**：元素的输出是下一个元素的输入，形成处理链。例如：先读取文件，再解析内容，最后计算结果，前一步的输出是后一步的输入。
+      7. **功能内聚（Functional Cohesion）**：所有元素共同完成一个明确、单一的功能。例如：`Stack` 类的所有方法都是为了实现“栈数据结构”这个单一功能。
+    - **目标**：追求功能内聚，避免偶然内聚和逻辑内聚。
+    - **好处**：提高代码可读性、便于理解和维护、降低修改风险、符合单一职责原则。
 
 - **Bubble Sort Example / 冒泡排序示例**  
   - **EN**: Splitting comparison and swap into one class and sorting loop into another can lead to awkward procedural cohesion and more coupling; often a clearer design is to keep closely related operations together.  
@@ -249,6 +432,217 @@
 - **Definition & Examples / 定义与示例**  
   - **EN**: A code smell is a symptom of violating design principles that may lead to more changes, more bugs, and worse comprehension; examples include magic numbers, hardcoding, long methods, poor naming, duplicated code, Blob, and Spaghetti Code.  
   - **中**：代码坏味道是违反设计原则的征兆，会让类更易变、更易出错且难以理解，典型例子有魔法数字、硬编码、超长函数、命名混乱、重复代码、大泥团（Blob）、意大利面代码等。
+
+- **Magic Numbers / 魔法数字**  
+  - **EN**: Magic numbers are unexplained numeric literals in code that lack clear meaning, making code hard to understand and maintain.  
+  - **中**：魔法数字是代码中未解释的数字字面量，缺乏明确含义，使代码难以理解和维护。  
+  - **通俗理解**：魔法数字就像在文章里突然写“3.14159”而不说这是圆周率——读者不知道这个数字是什么意思，为什么要用这个值。写代码时，如果看到 `if (age >= 18)` 还好理解，但看到 `if (price * 0.08 > 100)` 就不知道 0.08 是什么（可能是税率？），100 是什么（可能是阈值？）。  
+  - **详细说明**：
+    - **问题**：数字字面量直接出现在代码中，没有注释或常量说明其含义，导致：
+      - 难以理解：不知道数字代表什么业务含义。
+      - 难以维护：如果这个值需要修改，要在多个地方找，容易遗漏。
+      - 容易出错：可能在不同地方用了不同的值（比如有的地方用 0.08，有的用 0.085）。
+    - **例子**：
+      ```java
+      // 坏：魔法数字
+      if (user.getAge() >= 18) { ... }
+      double tax = price * 0.08;
+      if (items.size() > 10) { ... }
+      
+      // 好：使用有意义的常量
+      private static final int LEGAL_AGE = 18;
+      private static final double TAX_RATE = 0.08;
+      private static final int MAX_ITEMS_FOR_DISCOUNT = 10;
+      
+      if (user.getAge() >= LEGAL_AGE) { ... }
+      double tax = price * TAX_RATE;
+      if (items.size() > MAX_ITEMS_FOR_DISCOUNT) { ... }
+      ```
+    - **重构方法**：将魔法数字提取为有意义的常量或枚举，并添加注释说明其业务含义。
+
+- **Hardcoding / 硬编码**  
+  - **EN**: Hardcoding refers to embedding fixed values (strings, URLs, file paths, configuration) directly in source code instead of using configuration files, environment variables, or constants.  
+  - **中**：硬编码是指将固定值（字符串、URL、文件路径、配置）直接写在源代码中，而不是使用配置文件、环境变量或常量。  
+  - **通俗理解**：硬编码就像把“我家地址”直接写在程序里，而不是写在配置文件里。如果搬家了，就要改代码、重新编译、重新部署。如果地址写在配置文件里，改一下配置文件就行，程序不用动。写代码时，把数据库连接字符串、API 密钥、文件路径等直接写在代码里，就是硬编码。  
+  - **详细说明**：
+    - **问题**：
+      - **环境依赖**：不同环境（开发、测试、生产）需要不同的配置，硬编码无法适应。
+      - **安全性**：敏感信息（密码、密钥）写在代码里容易被泄露。
+      - **灵活性差**：修改配置需要改代码、重新编译、重新部署。
+      - **难以测试**：测试时无法轻松切换不同的配置。
+    - **例子**：
+      ```java
+      // 坏：硬编码
+      String dbUrl = "jdbc:mysql://localhost:3306/mydb";
+      String apiKey = "sk-1234567890abcdef";
+      String logPath = "C:\\logs\\app.log";
+      
+      // 好：使用配置文件或环境变量
+      String dbUrl = config.getProperty("database.url");
+      String apiKey = System.getenv("API_KEY");
+      String logPath = config.getProperty("log.path", "/var/log/app.log");
+      ```
+    - **重构方法**：
+      - 使用配置文件（properties、YAML、JSON）。
+      - 使用环境变量。
+      - 使用配置类或配置服务。
+      - 敏感信息使用密钥管理服务。
+
+- **Long Methods / 长方法**  
+  - **EN**: Long methods are functions that contain too many lines of code or handle multiple responsibilities, making them hard to understand, test, and maintain.  
+  - **中**：长方法是包含过多代码行或处理多个职责的函数，使其难以理解、测试和维护。  
+  - **通俗理解**：长方法就像一篇没有分段的长文章——从头读到尾，不知道重点在哪，想找某个功能要翻半天。写代码时，如果一个函数有几百行，做了很多事情（验证输入、处理业务、写数据库、发邮件、写日志），那这个函数就是“长方法”。应该把它拆成多个小函数，每个函数只做一件事。  
+  - **详细说明**：
+    - **问题**：
+      - **难以理解**：代码太长，需要上下滚动才能看全，难以把握整体逻辑。
+      - **难以测试**：一个方法做太多事，测试用例复杂，难以覆盖所有分支。
+      - **难以维护**：修改一个功能可能影响其他功能，容易引入 bug。
+      - **难以复用**：功能耦合在一起，无法单独复用某个部分。
+    - **判断标准**：
+      - 一般建议：一个方法不超过 20-30 行。
+      - 如果方法超过 50 行，应该考虑拆分。
+      - 如果方法做了多件事（有多个“抽象层级”），应该拆分。
+    - **例子**：
+      ```java
+      // 坏：长方法，做了多件事
+      public void processOrder(Order order) {
+          // 验证订单（20行）
+          if (order == null) { throw ... }
+          if (order.getItems().isEmpty()) { throw ... }
+          // ... 更多验证
+          
+          // 计算价格（30行）
+          double total = 0;
+          for (Item item : order.getItems()) { ... }
+          // ... 计算折扣、税费
+          
+          // 保存到数据库（20行）
+          // ... 数据库操作
+          
+          // 发送邮件（15行）
+          // ... 邮件发送逻辑
+          
+          // 写日志（10行）
+          // ... 日志记录
+      }
+      
+      // 好：拆分成多个小方法
+      public void processOrder(Order order) {
+          validateOrder(order);
+          double total = calculateTotal(order);
+          saveOrder(order, total);
+          sendConfirmationEmail(order);
+          logOrderProcessed(order);
+      }
+      
+      private void validateOrder(Order order) { ... }
+      private double calculateTotal(Order order) { ... }
+      private void saveOrder(Order order, double total) { ... }
+      private void sendConfirmationEmail(Order order) { ... }
+      private void logOrderProcessed(Order order) { ... }
+      ```
+    - **重构方法**：
+      - **提取方法（Extract Method）**：将长方法中的逻辑块提取成独立方法。
+      - **提取类（Extract Class）**：如果方法属于不同职责，可以提取到新类中。
+      - 遵循单一职责原则，每个方法只做一件事。
+
+- **Poor Naming / 命名不当**  
+  - **EN**: Poor naming uses vague, misleading, or non-descriptive names for variables, methods, or classes, making code self-documentation impossible and increasing cognitive load.  
+  - **中**：命名不当是指变量、方法或类使用了模糊、误导性或非描述性的名称，使代码无法自解释，增加认知负担。  
+  - **通俗理解**：命名不当就像给文件起名“新建文件夹”、“文档1”、“最终版”、“真的最终版”——过几天就不知道里面是什么了。写代码时，如果变量叫 `data`、`temp`、`x`，方法叫 `doSomething()`、`process()`，类叫 `Manager`、`Helper`，那别人（包括未来的自己）就看不懂这些名字到底是什么意思。  
+  - **详细说明**：
+    - **问题**：
+      - **可读性差**：名字不清晰，需要看实现才能理解。
+      - **容易误解**：名字可能误导，让人以为做了 A，实际做了 B。
+      - **维护困难**：不知道名字的含义，不敢轻易修改。
+      - **增加认知负担**：需要记住“这个变量实际是做什么的”。
+    - **命名原则**：
+      - **变量名**：应该是名词或名词短语，清晰表达“是什么”。
+        - 坏：`data`, `temp`, `x`, `arr`, `obj`
+        - 好：`userList`, `totalPrice`, `orderId`, `isValid`
+      - **方法名**：应该是动词或动词短语，清晰表达“做什么”。
+        - 坏：`process()`, `doSomething()`, `handle()`, `getData()`
+        - 好：`calculateTotal()`, `validateUser()`, `sendEmail()`, `findUserById()`
+      - **类名**：应该是名词，清晰表达“是什么实体或概念”。
+        - 坏：`Manager`, `Helper`, `Util`, `Processor`
+        - 好：`OrderService`, `EmailValidator`, `DatabaseConnection`, `PaymentProcessor`
+      - **布尔变量/方法**：应该用 `is`, `has`, `can`, `should` 开头。
+        - 好：`isValid`, `hasPermission`, `canVote`, `shouldRetry`
+    - **例子**：
+      ```java
+      // 坏：命名不当
+      public void p(Data d) {
+          int x = d.getX();
+          int y = d.getY();
+          int r = x + y;
+          System.out.println(r);
+      }
+      
+      // 好：清晰的命名
+      public void printTotalPrice(Order order) {
+          int itemPrice = order.getItemPrice();
+          int shippingFee = order.getShippingFee();
+          int totalPrice = itemPrice + shippingFee;
+          System.out.println(totalPrice);
+      }
+      ```
+    - **重构方法**：
+      - 使用 IDE 的重命名功能（Refactor → Rename）。
+      - 遵循团队的命名约定。
+      - 如果名字需要注释才能理解，说明名字不够好，应该改进名字而不是加注释。
+
+- **Code Duplication / 代码重复**  
+  - **EN**: Code duplication occurs when the same or very similar code appears in multiple places, violating the DRY (Don't Repeat Yourself) principle and making maintenance harder.  
+  - **中**：代码重复是指相同或非常相似的代码出现在多个地方，违反 DRY（不要重复自己）原则，使维护变得困难。  
+  - **通俗理解**：代码重复就像把同一段话在文章里复制粘贴了 10 次——如果这段话有错别字，你要改 10 个地方，而且可能漏掉几个。写代码时，如果多个地方有相同的逻辑（比如验证邮箱格式、计算折扣、格式化日期），应该提取成一个函数，而不是在每个地方都写一遍。  
+  - **详细说明**：
+    - **问题**：
+      - **维护成本高**：修改逻辑需要在多个地方改，容易遗漏，导致不一致。
+      - **容易出错**：复制粘贴时可能改错，或者不同地方改得不一样。
+      - **代码膨胀**：重复代码让代码库变大，增加阅读负担。
+      - **违反 DRY 原则**：DRY（Don't Repeat Yourself）是软件开发的基本原则。
+    - **重复的类型**：
+      - **完全重复**：两段代码完全相同。
+      - **结构重复**：代码结构相同，只是变量名或值不同。
+      - **逻辑重复**：实现相同逻辑，但写法略有不同。
+    - **例子**：
+      ```java
+      // 坏：代码重复
+      // 在 OrderService 中
+      public void processOrder(Order order) {
+          if (order.getEmail() == null || !order.getEmail().contains("@")) {
+              throw new IllegalArgumentException("Invalid email");
+          }
+          // ... 处理订单
+      }
+      
+      // 在 UserService 中
+      public void createUser(User user) {
+          if (user.getEmail() == null || !user.getEmail().contains("@")) {
+              throw new IllegalArgumentException("Invalid email");
+          }
+          // ... 创建用户
+      }
+      
+      // 好：提取公共方法
+      public class EmailValidator {
+          public static void validate(String email) {
+              if (email == null || !email.contains("@")) {
+                  throw new IllegalArgumentException("Invalid email");
+              }
+          }
+      }
+      
+      // 使用
+      EmailValidator.validate(order.getEmail());
+      EmailValidator.validate(user.getEmail());
+      ```
+    - **重构方法**：
+      - **提取方法（Extract Method）**：将重复代码提取成独立方法。
+      - **提取类（Extract Class）**：如果重复逻辑较复杂，可以提取到工具类中。
+      - **使用模板方法模式**：如果重复的是算法框架，可以用模板方法模式。
+      - **使用继承或组合**：通过继承或组合复用代码。
+    - **注意**：不是所有重复都要消除，有时为了可读性或性能，可以接受少量重复。但要避免逻辑重复。
 
 - **Impact & Refactoring / 影响与重构**  
   - **EN**: Empirical studies show classes with more smells change more often and contain more bug fixes; refactoring (manual or tool‑assisted) is used to remove or reduce smells, but removing all smells is neither realistic nor necessary.  
